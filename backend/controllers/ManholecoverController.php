@@ -143,8 +143,7 @@ class ManholecoverController extends Controller
                 /*$this->findModel($id)->delete();*/
                 $model = $this->findModel($id);
                 $model->status = Manholecover::STATUS_DISABLED;
-                $ret = $model->save();
-                var_dump($ret);exit;
+                $model->save();
             }
         }
     
