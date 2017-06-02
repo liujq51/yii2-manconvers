@@ -1,0 +1,52 @@
+<?php
+
+use yii\helpers\Html;
+use yii\widgets\ActiveForm;
+use rbac\admin\models\Menu;
+use yii\helpers\Json;
+use rbac\admin\AutocompleteAsset;
+use mihaildev\ckeditor\CKEditor;
+
+/* @var $this yii\web\View */
+/* @var $model rbox\admin\models\Menu */
+/* @var $form yii\widgets\ActiveForm */
+AutocompleteAsset::register($this);
+$opts = Json::htmlEncode([
+        'menus' => Menu::getMenuSource(),
+        'routes' => Menu::getSavedRoutes(),
+    ]);
+$this->registerJs("var _opts = $opts;");
+$this->registerJs($this->render('_script.js'));
+?>
+
+<div class="menu-form">
+    <?php $form = ActiveForm::begin(); ?>
+    <?= Html::activeHiddenInput($model, 'parent', ['id' => 'parent_id']); ?>
+    <div class="row">
+        <div class="col-sm-6">
+            <?= $form->field($model, 'name')->textInput(['maxlength' => 128]) ?>
+            <?= $form->field($model, 'parent_name')->textInput(['id' => 'parent_name']) ?>
+            <?= $form->field($model, 'route')->textInput(['id' => 'route']) ?>
+        </div>
+        <div class="col-sm-6">
+            <?= $form->field($model, 'order')->input('number') ?>
+            <?= $form->field($model, 'data')->textarea(['rows' => 4]) ?>
+				<?= $form->field($model, 'description')->textarea(['rows' => 4,'maxlength'=>255])->widget(
+				    CKEditor::className(),[
+                    'editorOptions' => [
+                    'preset' => 'basic',
+                    'inline' => false,
+                        ],
+                    ]);
+				?>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <?=
+        Html::submitButton($model->isNewRecord ? Yii::t('rbac-admin', 'Create') : Yii::t('rbac-admin', 'Edit'), ['class' => $model->isNewRecord
+                    ? 'btn btn-success' : 'btn btn-primary'])
+        ?>
+    </div>
+    <?php ActiveForm::end(); ?>
+</div>
