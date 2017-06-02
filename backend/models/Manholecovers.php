@@ -17,7 +17,7 @@ use backend\models\RegionArea;
  * @property string $createat
  * @property string $updateat
  */
-class Manholecover extends \yii\db\ActiveRecord
+class Manholecovers extends \yii\db\ActiveRecord
 {
     const STATUS_DISABLED = -1;
     const STATUS_ENABLED =  1;
@@ -28,7 +28,7 @@ class Manholecover extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return '{{%manhole_cover}}';
+        return '{{%manhole_covers}}';
     }
 
     /**

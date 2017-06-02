@@ -2,7 +2,7 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
-use backend\models\Manholecover;
+use backend\models\Manholecovers;
 
 /* @var $this yii\web\View */
 /* @var $searchModel admin\models\AppSearch */
@@ -45,19 +45,19 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute' => 'status',
                 'format' => 'html',
                 'value' => function ($model) {
-                    if ($model->status === Manholecover::STATUS_ENABLED) {
+                    if ($model->status === Manholecovers::STATUS_ENABLED) {
                         $class = 'label-success';
-                    } elseif ($model->status === Manholecover::STATUS_DISABLED) {
+                    } elseif ($model->status === Manholecovers::STATUS_DISABLED) {
                         $class = 'label-warning';
                     } else {
                         $class = 'label-info';
                     }
-                   return (!empty($model->status))?'<span class="label ' . $class . '">' . Manholecover::getStatusLabels($model->status) . '</span>':'';
+                   return (!empty($model->status))?'<span class="label ' . $class . '">' . Manholecovers::getStatusLabels($model->status) . '</span>':'';
                 },
                 'filter' => Html::activeDropDownList(
                     $searchModel,
                     'status',
-                    Manholecover::getStatusLabels(),
+                    Manholecovers::getStatusLabels(),
                     ['class' => 'form-control', 'prompt' => Yii::t('cover', 'Please Filter')]
                 )
             ],
@@ -104,8 +104,8 @@ $this->params['breadcrumbs'][] = $this->title;
     ]); ?>
 </div>
 <?php
-$urlBatchDelete = \yii\helpers\Url::to(['/manholecover/batch-delete']);
-$urlBatchDisabled = \yii\helpers\Url::to(['/manholecover/batch-disabled']);
+$urlBatchDelete = \yii\helpers\Url::to(['/manholecovers/batch-delete']);
+$urlBatchDisabled = \yii\helpers\Url::to(['/manholecovers/batch-disabled']);
 $js = <<<JS
 jQuery(document).ready(function() {
     $("#batchDelete").click(function() {

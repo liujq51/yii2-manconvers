@@ -3,16 +3,16 @@
 namespace backend\controllers;
 
 use Yii;
-use backend\models\Manholecover;
-use backend\models\ManholecoverSearch;
+use backend\models\Manholecovers;
+use backend\models\ManholecoversSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * ManholecoverController implements the CRUD actions for Manholecover model.
+ * ManholecoversController implements the CRUD actions for Manholecover model.
  */
-class ManholecoverController extends Controller
+class ManholecoversController extends Controller
 {
     /**
      * @inheritdoc
@@ -30,12 +30,12 @@ class ManholecoverController extends Controller
     }
 
     /**
-     * Lists all Manholecover models.
+     * Lists all Manholecovers models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new ManholecoverSearch();
+        $searchModel = new ManholecoversSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -45,7 +45,7 @@ class ManholecoverController extends Controller
     }
 
     /**
-     * Displays a single Manholecover model.
+     * Displays a single Manholecovers model.
      * @param integer $id
      * @return mixed
      */
@@ -57,13 +57,13 @@ class ManholecoverController extends Controller
     }
 
     /**
-     * Creates a new Manholecover model.
+     * Creates a new Manholecovers model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Manholecover();
+        $model = new Manholecovers();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -75,7 +75,7 @@ class ManholecoverController extends Controller
     }
 
     /**
-     * Updates an existing Manholecover model.
+     * Updates an existing Manholecovers model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -94,7 +94,7 @@ class ManholecoverController extends Controller
     }
 
     /**
-     * Deletes an existing Manholecover model.
+     * Deletes an existing Manholecovers model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -106,7 +106,7 @@ class ManholecoverController extends Controller
         return $this->redirect(['index']);
     }
     /**
-     * Batch delete existing Manholecover models.
+     * Batch delete existing Manholecovers models.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param array $ids
      * @return mixed
@@ -120,7 +120,7 @@ class ManholecoverController extends Controller
             foreach ($ids as $id) {
                 /*$this->findModel($id)->delete();*/
                 $model = $this->findModel($id);
-                $model->status = Manholecover::STATUS_DELETED;
+                $model->status = Manholecovers::STATUS_DELETED;
                 $model->save();
             }
         }
@@ -128,7 +128,7 @@ class ManholecoverController extends Controller
         return $this->redirect(['index']);
     }
     /**
-     * Batch delete existing Manholecover models.
+     * Batch delete existing Manholecovers models.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param array $ids
      * @return mixed
@@ -142,7 +142,7 @@ class ManholecoverController extends Controller
             foreach ($ids as $id) {
                 /*$this->findModel($id)->delete();*/
                 $model = $this->findModel($id);
-                $model->status = Manholecover::STATUS_DISABLED;
+                $model->status = Manholecovers::STATUS_DISABLED;
                 $model->save();
             }
         }
@@ -150,7 +150,7 @@ class ManholecoverController extends Controller
         return $this->redirect(['index']);
     }
     /**
-     * Finds the Manholecover model based on its primary key value.
+     * Finds the Manholecovers model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
      * @return Manholecover the loaded model
@@ -158,7 +158,7 @@ class ManholecoverController extends Controller
      */
     protected function findModel($id)
     {
-        if (($model = Manholecover::findOne($id)) !== null) {
+        if (($model = Manholecovers::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

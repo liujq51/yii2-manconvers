@@ -4,12 +4,12 @@ namespace backend\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use backend\models\Manholecover;
+use backend\models\Manholecovers;
 
 /**
  * AppSearch represents the model behind the search form about `admin\models\App`.
  */
-class ManholecoverSearch extends Manholecover
+class ManholecoversSearch extends Manholecovers
 {
     public $province;
     public $city;
@@ -44,7 +44,7 @@ class ManholecoverSearch extends Manholecover
      */
     public function search($params)
     {
-        $query = Manholecover::find()->where(['>=','status',-1])->joinWith(['province as p']);
+        $query = Manholecovers::find()->where(['>=','status',-1])->joinWith(['province as p']);
 
         // add conditions that should always apply here
 
