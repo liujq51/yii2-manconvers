@@ -62,7 +62,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                                             'class' => 'btn btn-sm btn-primary',
                                                             'type' => 'button',
                                                         ];
-                                                        $url = "/rbac/user/view?id=".$model->id;
+                                                        $url = "/rbac/user/update?id=".$model->id;
                                                         return Html::a('编辑', $url, $options);
                                                         },
                                                   'assignments' => function ($url, $model) {

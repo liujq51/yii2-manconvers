@@ -85,23 +85,15 @@ use yii\bootstrap\Nav;
 						</a>
 						<ul class="dropdown-menu pull-right">
 							<li>
-								<a href="javascript:void(0);" class="padding-10 padding-top-0 padding-bottom-0"><i class="fa fa-cog"></i> Setting</a>
+								<a href="/site/profile" class="padding-10 padding-top-0 padding-bottom-0"> <i class="fa fa-user"></i> <?php echo Yii::t('cover', 'Profile')?></a>
 							</li>
 							<li class="divider"></li>
 							<li>
-								<a href="#ajax/profile.html" class="padding-10 padding-top-0 padding-bottom-0"> <i class="fa fa-user"></i> <u>P</u>rofile</a>
+								<a href="/site/change-password" class="padding-10 padding-top-0 padding-bottom-0"><i class="fa fa-cog"></i> <?php echo Yii::t('cover', 'Change Password')?></a>
 							</li>
 							<li class="divider"></li>
 							<li>
-								<a href="javascript:void(0);" class="padding-10 padding-top-0 padding-bottom-0" data-action="toggleShortcut"><i class="fa fa-arrow-down"></i> <u>S</u>hortcut</a>
-							</li>
-							<li class="divider"></li>
-							<li>
-								<a href="javascript:void(0);" class="padding-10 padding-top-0 padding-bottom-0" data-action="launchFullscreen"><i class="fa fa-arrows-alt"></i> Full <u>S</u>creen</a>
-							</li>
-							<li class="divider"></li>
-							<li>
-							    <?php echo Html::a('<i class="fa fa-sign-out fa-lg"></i> <strong><u>L</u>ogout</strong>',['/site/logout'],['data-method' => 'post','class'=>'padding-10 padding-top-5 padding-bottom-5'])?> 
+							    <?php echo Html::a('<i class="fa fa-sign-out fa-lg"></i> <strong>'.Yii::t('cover', 'Logout').'</strong>',['/site/logout'],['data-method' => 'post','class'=>'padding-10 padding-top-5 padding-bottom-5'])?> 
 							</li>
 						</ul>
 					</li>

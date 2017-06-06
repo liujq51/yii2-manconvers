@@ -24,4 +24,10 @@ return [
     'City' => '市',
     'Area' => '区县',
     'Please Filter' => '请选择',
+    'New password' => '新密码',
+    'repassword'  =>'密码确认',
+    'Old Password' => '旧密码',
+    'New password was saved.' => '新密码已保存。',
+    'Profile' => '个人信息',
+    'Change Password' => '修改密码',
 ];

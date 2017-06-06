@@ -25,6 +25,9 @@ class Admin extends ActiveRecord implements IdentityInterface
 {
     const STATUS_DELETED = 0;
     const STATUS_ACTIVE = 10;
+    public $password = '';
+    public $repassword = '';
+    public $oldpassword = '';
 
     /**
      * @inheritdoc
@@ -52,6 +55,17 @@ class Admin extends ActiveRecord implements IdentityInterface
         return [
             ['status', 'default', 'value' => self::STATUS_ACTIVE],
             ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_DELETED]],
+            ['username','trim', 'on' => ['admin-profile']],
+            [['username'],'required', 'on' => ['admin-profile']],
+            ['username', 'match', 'pattern' => '/^[a-zA-Z0-9_-]+$/', 'on' => ['admin-profile']],
+            [['username'], 'string', 'min'=>3,'max' => 100, 'on' => ['admin-profile']],
+            [['username','email'],'unique', 'on' => ['admin-profile']],
+            ['mobile','integer', 'on' => ['admin-profile']],
+            ['email','email', 'on' => ['admin-profile']],
+            [['password', 'repassword', 'oldpassword'], 'required', 'on' => ['admin-change-password']],
+            [['password', 'repassword', 'oldpassword'], 'string', 'min' => 5, 'max' => 30, 'on' => ['admin-change-password']],
+            
+            ['oldpassword', 'validateOldPassword', 'on' => ['admin-change-password']],
         ];
     }
 
@@ -161,7 +175,7 @@ class Admin extends ActiveRecord implements IdentityInterface
     {
         $this->password_hash = Yii::$app->security->generatePasswordHash($password);
     }
-
+    
     /**
      * Generates "remember me" authentication key
      */
@@ -185,4 +199,22 @@ class Admin extends ActiveRecord implements IdentityInterface
     {
         $this->password_reset_token = null;
     }
+    
+    /**
+     * Validates the password.
+     * This method serves as the inline validation for password.
+     *
+     * @param string $attribute the attribute currently being validated
+     * @param array $params the additional name-value pairs given in the rule
+     */
+    public function validateOldPassword($attribute, $params)
+    {
+        if (!$this->hasErrors()) {
+            $admin = self::findOne(Yii::$app->user->identity->id);
+            if (!$admin || !$admin->validatePassword($this->oldpassword)) {
+                $this->addError($attribute, Yii::t('error', 'Incorrect old password.'));
+            }
+        }
+    }
+    
 }

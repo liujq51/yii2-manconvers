@@ -38,7 +38,7 @@ class Manholecovers extends \yii\db\ActiveRecord
     {
         return [
             [['status','province_id','city_id','area_id'], 'integer'],
-            [['createat', 'updateat'], 'safe'],
+            [['created_at', 'updateat'], 'safe'],
             [['cover_id'], 'required'],
             [['cover_id'], 'string', 'max' => 100],
             [['cover_name'], 'string', 'max' => 100],

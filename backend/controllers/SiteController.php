@@ -4,6 +4,7 @@ namespace backend\controllers;
 use Yii;
 use yii\web\Controller;
 use backend\models\LoginForm;
+use backend\models\Admin;
 use yii\filters\VerbFilter;
 use backend\models\PasswordResetRequestForm;
 use backend\models\ResetPasswordForm;
@@ -54,17 +55,6 @@ class SiteController extends Controller
             return $this->render('index');
       }else{
         $this->redirect(['/site/login']);
-        }
-    }
-    public function actionIndex1()
-    {
-        if (!\Yii::$app->user->isGuest) {
-            //return $this->goHome();
-            return $this->render('index1');
-        }else{
-            echo 'index1';
-            exit;
-            $this->redirect('/site/login');
         }
     }
     public function actionMail(){
@@ -170,7 +160,34 @@ class SiteController extends Controller
             'model' => $model,
         ]);
     }
-    public function actionHttp(){
-        redirect("file:///job/HOME/liujq/www/yii/rbox/");
+    public function actionProfile()
+    {
+        $model = Admin::findIdentity(Yii::$app->user->identity->id);
+        $model->setScenario('admin-profile');
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['profile']);
+        } else {
+            return $this->render('profile', [
+                'model' => $model,
+            ]);
+        }
+        return false;
+    }
+    public function actionChangePassword()
+    {
+        $model = new \backend\models\Admin(['scenario' => 'admin-change-password']);
+        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+            $admin = Admin::findOne(Yii::$app->user->identity->id);
+            $admin->setPassword($model->password);
+            $admin->generateAuthKey();
+            if ($admin->save()) {
+                Yii::$app->getSession()->setFlash('success', Yii::t('cover', 'New password was saved.'));
+            }
+            return $this->redirect(['change-password']);
+        }
+    
+        return $this->render('changePassword', [
+            'model' => $model,
+        ]);
     }
 }

@@ -90,8 +90,8 @@ class ManholecoversSearch extends Manholecovers
         $query->andFilterWhere([
             'cover_id' => $this->cover_id,
             'status' => $this->status,
-            'createat' => $this->createat,
-            'updateat' => $this->updateat,
+            'created_at' => $this->created_at,
+            'updated_at' => $this->updated_at,
         ]);
 
         $query->andFilterWhere(['like', 'cover_name', $this->cover_name])
