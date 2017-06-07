@@ -22,7 +22,7 @@ class ManholecoversSearch extends Manholecovers
         return [
             [['cover_id', 'status'], 'integer'],
             [['province','city','area'],'string'],
-            [['cover_name','remark', 'createat', 'updateat'], 'safe'],
+            [['cover_name','remark', 'created_at', 'updated_at'], 'safe'],
         ];
     }
 

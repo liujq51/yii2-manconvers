@@ -38,7 +38,7 @@ class Manholecovers extends \yii\db\ActiveRecord
     {
         return [
             [['status','province_id','city_id','area_id'], 'integer'],
-            [['created_at', 'updateat'], 'safe'],
+            [['created_at', 'updated_at'], 'safe'],
             [['cover_id'], 'required'],
             [['cover_id'], 'string', 'max' => 100],
             [['cover_name'], 'string', 'max' => 100],
@@ -53,8 +53,8 @@ class Manholecovers extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'cover_id' => Yii::t('app', 'Manhole cover id'),
-            'cover_name' => Yii::t('app', 'Manhole cover name'),
+            'cover_id' => Yii::t('app', 'Manhole Cover Id'),
+            'cover_name' => Yii::t('app', 'Manhole Cover Name'),
             'construction_time' => Yii::t('app', 'Construction Time'),
             'remark' => Yii::t('app', 'Remark'),
             'status' => Yii::t('app', 'Status'),

@@ -13,9 +13,10 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="user-index">
     <p>
-        <?= Html::a(Yii::t('rbac-admin', 'Create Departement'), ['create'], ['class' => 'btn btn-success']) ?>
-        <?= Html::a(Yii::t('rbac-admin', 'Batch ') . Yii::t('rbac-admin', 'Disabled'), '#', ['class' => 'btn btn-info', 'id' => 'batchDisabled']) ?>
-        <?= Html::a(Yii::t('rbac-admin', 'Batch ') . Yii::t('rbac-admin', 'Delete'), '#', ['class' => 'btn btn-danger', 'id' => 'batchDelete']) ?>
+        <?= Html::a(Yii::t('rbac-admin', 'Create Department'), ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a(Yii::t('rbac-admin', 'Batch ') . Yii::t('rbac-admin', 'Enabled'), '#', ['class' => 'btn btn-primary', 'id' => 'batchEnabled','data-type'=> 'STATUS_ENABLED']) ?>
+        <?= Html::a(Yii::t('rbac-admin', 'Batch ') . Yii::t('rbac-admin', 'Disabled'), '#', ['class' => 'btn btn-info', 'id' => 'batchDisabled','data-type'=> 'STATUS_DISABLED']) ?>
+        <?= Html::a(Yii::t('rbac-admin', 'Batch ') . Yii::t('rbac-admin', 'Delete'), '#', ['class' => 'btn btn-danger', 'id' => 'batchDelete','data-type'=> 'STATUS_DELETED']) ?>
     </p>
     <table class="table table-striped table-bordered">
         <thead>
@@ -46,10 +47,10 @@ $this->params['breadcrumbs'][] = $this->title;
                  echo '<span class="label ' . $class . '">' . Department::getStatusLabels($item['status']) . '</span>';
                  ?></td>
                 <td>
-                    <a href="<?= \Yii::$app->getUrlManager()->createUrl(['category/create','parent_id'=>$item['id']]); ?>" title="<?= Yii::t('rbac-admin', 'Add Sub Department');?>" data-pjax="0"><span class="glyphicon glyphicon-plus-sign"></span></a>
-                    <a href="<?= \Yii::$app->getUrlManager()->createUrl(['category/view','id'=>$item['id']]); ?>"" title="<?= Yii::t('rbac-admin', 'View');?>" data-pjax="0"><span class="glyphicon glyphicon-eye-open"></span></a>
-                    <a href="<?= \Yii::$app->getUrlManager()->createUrl(['category/update','id'=>$item['id']]); ?>"" title="<?= Yii::t('rbac-admin', 'Update');?>" data-pjax="0"><span class="glyphicon glyphicon-pencil"></span></a>
-                    <a href="<?= \Yii::$app->getUrlManager()->createUrl(['category/delete','id'=>$item['id']]); ?>"" title="<?= Yii::t('rbac-admin', 'Delete');?>" data-confirm="<?= Yii::t('cms', 'Are you sure you want to delete this item?');?>" data-method="post" data-pjax="0"><span class="glyphicon glyphicon-trash"></span></a>
+                    <a href="<?= \Yii::$app->getUrlManager()->createUrl(['/rbac/department/create','parent_id'=>$item['id']]); ?>" title="<?= Yii::t('rbac-admin', 'Add Sub Department');?>" data-pjax="0"><?= Yii::t('rbac-admin', 'Add Sub Department');?></a>
+                    <a href="<?= \Yii::$app->getUrlManager()->createUrl(['/rbac/department/view','id'=>$item['id']]); ?>"" title="<?= Yii::t('rbac-admin', 'View');?>" data-pjax="0"><span class="glyphicon glyphicon-eye-open"></span></a>
+                    <a href="<?= \Yii::$app->getUrlManager()->createUrl(['/rbac/department/update','id'=>$item['id']]); ?>"" title="<?= Yii::t('rbac-admin', 'Update');?>" data-pjax="0"><span class="glyphicon glyphicon-pencil"></span></a>
+                    <a href="<?= \Yii::$app->getUrlManager()->createUrl(['/rbac/department/delete','id'=>$item['id']]); ?>"" title="<?= Yii::t('rbac-admin', 'Delete');?>" data-confirm="<?= Yii::t('cms', 'Are you sure you want to delete this item?');?>" data-method="post" data-pjax="0"><span class="glyphicon glyphicon-trash"></span></a>
                 </td>
             </tr>
         <?php } ?>
@@ -57,8 +58,7 @@ $this->params['breadcrumbs'][] = $this->title;
     </table>
 </div>
 <?php
-$urlBatchDelete = \yii\helpers\Url::to(['/rbac/department/batch-delete']);
-$urlBatchDisabled = \yii\helpers\Url::to(['/rbac/department/batch-disabled']);
+$urlBatchUpdateStatus = \yii\helpers\Url::to(['/rbac/department/batch-update-status']);
 $js = <<<JS
 jQuery(document).ready(function() {
     //全选 
@@ -91,8 +91,9 @@ jQuery(document).ready(function() {
             $("#checkbox_all").prop("checked",false);
         }
     });
-    $("#batchDelete").click(function() {
+    $("#batchDelete,#batchDisabled,#batchEnabled").click(function() {
         var keys = [];
+        var statusType = $(this).data("type");
         $("input[name='checkbox_ids']:checkbox:checked").each(function(){
             keys.push($(this).val());
         });
@@ -102,27 +103,10 @@ jQuery(document).ready(function() {
         }
         $.ajax({
             type: "POST",
-            url: "{$urlBatchDelete}",
+            url: "{$urlBatchUpdateStatus}",
             dataType: "json",
-            data: {ids: keys}
+            data: {ids: keys,statusType:statusType}
         });
-    });
-    $("#batchDisabled").click(function() {
-        var keys = [];
-        $("input[name='checkbox_ids']:checkbox:checked").each(function(){
-            keys.push($(this).val());
-        });
-        if(keys.length ==0){
-            alert('请选择操作节点。');
-            return;
-        }
-        $.ajax({
-            type: "POST",
-            url: "{$urlBatchDisabled}",
-            dataType: "json",
-            data: {ids: keys}
-        });
-        
     });
 });
 JS;

@@ -38,24 +38,12 @@ class Department extends \yii\db\ActiveRecord
     /**
      * @inheritdoc
      */
-    public static function getDb()
-    {
-        if (Configs::instance()->db !== null) {
-            return Configs::instance()->db;
-        } else {
-            return parent::getDb();
-        }
-    }
-
-    /**
-     * @inheritdoc
-     */
     public function rules()
     {
         return [
-            [['status'], 'integer'],
-            [['created_at', 'updateat'], 'safe'],
-            [['id'], 'required'],
+            [['parent_id','status'], 'integer'],
+            [['created_at', 'updated_at','id'], 'safe'],
+            [['dep_name','desc'],'string'],
         ];
     }
     public function getparentDep(){

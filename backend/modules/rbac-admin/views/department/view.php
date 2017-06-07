@@ -7,8 +7,8 @@ use rbac\admin\components\Helper;
 /* @var $this yii\web\View */
 /* @var $model rbox\admin\models\User */
 
-$this->title = $model->username;
-$this->params['breadcrumbs'][] = ['label' => Yii::t('rbac-admin', 'Users'), 'url' => ['index']];
+$this->title = $model->dep_name;
+$this->params['breadcrumbs'][] = ['label' => Yii::t('rbac-admin', 'Department'), 'url' => ['/rbac/department']];
 $this->params['breadcrumbs'][] = $this->title;
 
 $controllerId = $this->context->uniqueId . '/';
@@ -16,7 +16,7 @@ $controllerId = $this->context->uniqueId . '/';
 <div class="user-view">
     <p>
         <?php
-        if ($model->status == 0 && Helper::checkRoute($controllerId . 'activate')) {
+        if ($model->status == -1 && Helper::checkRoute($controllerId . 'activate')) {
             echo Html::a(Yii::t('rbac-admin', 'Activate'), ['activate', 'id' => $model->id], [
                 'class' => 'btn btn-primary',
                 'data' => [
@@ -43,10 +43,10 @@ $controllerId = $this->context->uniqueId . '/';
     DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'username',
-            'email:email',
-            'created_at:date',
+            'dep_name',
+            'desc',
             'status',
+            'created_at:date',
         ],
     ])
     ?>

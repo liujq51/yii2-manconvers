@@ -64,7 +64,7 @@ class DepartmentController extends Controller
     public function actionCreate()
     {
         $model = new Department();
-    
+        $model->load(Yii::$app->request->post()) && $model->save();
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
@@ -109,16 +109,17 @@ class DepartmentController extends Controller
      * @param array $ids
      * @return mixed
      */
-    public function actionBatchDelete()
+    public function actionBatchUpdateStatus()
     {
         //if(!Yii::$app->user->can('deleteYourAuth')) throw new ForbiddenHttpException(Yii::t('app', 'No Auth'));
-    
         $ids = Yii::$app->request->post('ids');
+        $statusType = Yii::$app->request->post('statusType');
+        $status = constant('\rbac\admin\models\Department::'.$statusType);
         if (is_array($ids)) {
             foreach ($ids as $id) {
                 /*$this->findModel($id)->delete();*/
                 $model = $this->findModel($id);
-                $model->status = Department::STATUS_DELETED;
+                $model->status = $status;
                 $model->save();
             }
         }

@@ -7,7 +7,7 @@ use yii\widgets\DetailView;
 /* @var $model admin\models\App */
 
 $this->title = $model->cover_id;
-$this->params['breadcrumbs'][] = ['label' => Yii::t('yii', 'Manhole Covers'), 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('menu', 'Manhole cover list'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="app-view">
@@ -32,8 +32,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'cover_name',
             'remark',
             'status',
-            'createat',
-            'updateat',
+            'created_at',
+            'updated_at',
         ],
     ]) ?>
 
