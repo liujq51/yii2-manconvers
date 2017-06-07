@@ -25,20 +25,23 @@ $this->params['breadcrumbs'][] = $this->title;
                                         //['class' => 'yii\grid\SerialColumn'],
                                         [
                                             'attribute' => 'username',
+                                            'label' => Yii::t('rbac-admin', 'Name'),
                                             'options' => ['width' => '100px;'],
                                             
                                         ],
                                         [
                                         'attribute' => 'email',
+                                        'label' => Yii::t('rbac-admin', 'Email'),
                                         'options' => ['width' => '200px;'],
                                         
                                         ],
                                         [
                                             'attribute' => 'mobile',
+                                            'label' => Yii::t('rbac-admin', 'Mobile'),
                                             'options' => ['width' => '300px;'],
                                         ],
                                         [
-                                        'label' => 'Assignment',
+                                        'label' => Yii::t('rbac-admin', 'Assignment'),
                                         'value'=> function($model){
                                                 if($model->assignment){
                                                     return array_reduce((array)$model->assignment, function ($result, $v){
@@ -52,6 +55,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                         ],
                                         [
                                             'class' => 'yii\grid\ActionColumn',
+                                            'header' => Yii::t('app', 'Action'),
                                             'template' => Helper::filterActionColumn(['userinfo','assignments']),
                                             'buttons' => [
                                                 'userinfo' => function ($url, $model) {
@@ -63,7 +67,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                                             'type' => 'button',
                                                         ];
                                                         $url = "/rbac/user/update?id=".$model->id;
-                                                        return Html::a('编辑', $url, $options);
+                                                        return Html::a(Yii::t('rbac-admin', 'Update'), $url, $options);
                                                         },
                                                   'assignments' => function ($url, $model) {
                                                         $options = [
@@ -74,7 +78,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                                             'type' => 'button',
                                                         ];
                                                         $url = "/rbac/assignment/view?id=".$model->id;
-                                                        return Html::a('授权', $url, $options);
+                                                        return Html::a(Yii::t('rbac-admin', 'Assignments'), $url, $options);
                                                     },
                                                 ]
                                             ],

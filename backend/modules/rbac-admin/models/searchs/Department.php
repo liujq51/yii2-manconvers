@@ -5,22 +5,21 @@ namespace rbac\admin\models\searchs;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use rbac\admin\models\User as UserModel;
+use rbac\admin\models\Department as DepartmentModel;
 
 /**
  * User represents the model behind the search form about `rbox\admin\models\User`.
  */
-class User extends UserModel
+class Department extends DepartmentModel
 {
-    public $user_type = '1';
     /**
      * @inheritdoc
      */
     public function rules()
     {
         return [
-            [['id', 'created_at', 'updated_at'], 'integer'],
-            [['username','mobile','password_hash', 'password_reset_token', 'email'], 'safe'],
+            [['status', 'created_at', 'updated_at'], 'integer'],
+            [['dep_name'], 'string', 'max' => 100],
         ];
     }
 
@@ -42,7 +41,7 @@ class User extends UserModel
      */
     public function search($params)
     {
-        $query = UserModel::find();
+        $query = DepartmentModel::find();
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
             'pagination' => [
@@ -61,16 +60,15 @@ class User extends UserModel
 
         $query->andFilterWhere([
             'id' => $this->id,
-            //'status' => $this->status,
+            'status' => $this->status,
             //'created_at' => $this->created_at,
              //   'auth.item_name' => NULL,
             //'updated_at' => $this->updated_at,
         ]);
         
-        $query->andFilterWhere(['like', 'username', $this->username])
-            ->andFilterWhere(['like', 'mobile', $this->mobile])
+        $query->andFilterWhere(['like', 'dep_name', $this->dep_name]);
             //->andFilterWhere(['<>', 'auth.item_name', 'null'])
-            ->andFilterWhere(['like', 'email', $this->email]);
+            //->andFilterWhere(['like', 'email', $this->email]);
         
         return $dataProvider;
     }

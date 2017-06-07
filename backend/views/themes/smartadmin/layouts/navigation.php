@@ -22,7 +22,7 @@ use rbac\admin\components\MenuHelper;
                 $data = eval($menu['data']);
             	 $icon = (isset($data['icon']) && $data['icon'])?$data['icon']:[];
                 return [
-                    'label' => $menu['name'],
+                    'label' => Yii::t('menu', $menu['name']),
                     'url' => $menu['children']?'#':[$menu['route']],
             		  'icon' => $icon,
                     'items' => $menu['children'],

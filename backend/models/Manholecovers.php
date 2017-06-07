@@ -53,14 +53,14 @@ class Manholecovers extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'cover_id' => Yii::t('cover', 'Manhole Covers ID'),
-            'cover_name' => Yii::t('cover', 'Manhole Covers Name'),
-            'construction_time' => Yii::t('cover', 'Construction Time'),
-            'remark' => Yii::t('cover', 'Remark'),
-            'status' => Yii::t('cover', 'Status'),
-            'province' => Yii::t('cover', 'Province'),
-            'city' => Yii::t('cover', 'City'),
-            'area' => Yii::t('cover', 'Area'),
+            'cover_id' => Yii::t('app', 'Manhole cover id'),
+            'cover_name' => Yii::t('app', 'Manhole cover name'),
+            'construction_time' => Yii::t('app', 'Construction Time'),
+            'remark' => Yii::t('app', 'Remark'),
+            'status' => Yii::t('app', 'Status'),
+            'province' => Yii::t('app', 'Province'),
+            'city' => Yii::t('app', 'City'),
+            'area' => Yii::t('app', 'Area'),
         ];
     }
     
@@ -82,12 +82,12 @@ class Manholecovers extends \yii\db\ActiveRecord
     public static function getStatusLabels($id = null)
     {
         $data = [
-            self::STATUS_DISABLED => Yii::t('cover', 'Disabled'),
-            self::STATUS_ENABLED => Yii::t('cover', 'Enabled'),
+            self::STATUS_DISABLED => Yii::t('app', 'Disabled'),
+            self::STATUS_ENABLED => Yii::t('app', 'Enabled'),
         ];
     
-        if ($id !== null && isset($data[$id])) {
-            return $data[$id];
+        if ($id !== null) {
+            return isset($data[$id])?$data[$id]:'';
         } else {
             return $data;
         }

@@ -20,7 +20,7 @@ use mihaildev\ckeditor\CKEditor;
     <?= $form->field($model, 'remark')->widget(CKEditor::className(),['editorOptions' => ['preset' => 'basic', 'inline' => false,]]);?>
     <?= $form->field($model, 'status')->textInput() ?>
     <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? Yii::t('cover', 'Create') : Yii::t('cover', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
     <?php ActiveForm::end(); ?>
 </div>

@@ -8,7 +8,7 @@ use backend\models\Manholecovers;
 /* @var $searchModel admin\models\AppSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('cover', 'Manhole Covers');
+$this->title = Yii::t('app', 'Manhole cover');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="app-index">
@@ -16,9 +16,9 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a(Yii::t('cover', 'Create Manhole Covers'), ['create'], ['class' => 'btn btn-success']) ?>
-        <?= Html::a(Yii::t('cover', 'Batch ') . Yii::t('cover', 'Disabled'), '#', ['class' => 'btn btn-info', 'id' => 'batchDisabled']) ?>
-        <?= Html::a(Yii::t('cover', 'Batch ') . Yii::t('cover', 'Delete'), '#', ['class' => 'btn btn-danger', 'id' => 'batchDelete']) ?>
+        <?= Html::a(Yii::t('app', 'Create manhole cover'), ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a(Yii::t('app', 'Batch ') . Yii::t('app', 'Disabled'), '#', ['class' => 'btn btn-info', 'id' => 'batchDisabled']) ?>
+        <?= Html::a(Yii::t('app', 'Batch ') . Yii::t('app', 'Delete'), '#', ['class' => 'btn btn-danger', 'id' => 'batchDelete']) ?>
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -32,15 +32,15 @@ $this->params['breadcrumbs'][] = $this->title;
             'cover_name',
             /*[
                 'attribute'=>'province',
-                'label' => Yii::t('cover', 'Province'),
+                'label' => Yii::t('app', 'Province'),
                 'value' => function($model){
                     return $model->province?$model->province->province:'';
                 },
                 'format' => 'html',
             ],*/
-            ['label'=>Yii::t('cover', 'Province'), 'attribute' => 'province',  'value' => 'province.province' ],
-            ['label'=>Yii::t('cover', 'City'), 'attribute' => 'city',  'value' => 'city.city' ],
-            ['label'=>Yii::t('cover', 'Area'), 'attribute' => 'area',  'value' => 'area.area' ],
+            ['label'=>Yii::t('app', 'Province'), 'attribute' => 'province',  'value' => 'province.province' ],
+            ['label'=>Yii::t('app', 'City'), 'attribute' => 'city',  'value' => 'city.city' ],
+            ['label'=>Yii::t('app', 'Area'), 'attribute' => 'area',  'value' => 'area.area' ],
             [
                 'attribute' => 'status',
                 'format' => 'html',
@@ -58,7 +58,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     $searchModel,
                     'status',
                     Manholecovers::getStatusLabels(),
-                    ['class' => 'form-control', 'prompt' => Yii::t('cover', 'Please Filter')]
+                    ['class' => 'form-control', 'prompt' => Yii::t('app', 'Please Filter')]
                 )
             ],
             'construction_time',
@@ -68,35 +68,35 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'updateat',
             [
                 'class' => 'yii\grid\ActionColumn',
-                'header' => Yii::t('cover', 'Action'),
+                'header' => Yii::t('app', 'Action'),
                 'options' => ['width' => '200px;'],
                 'template' => '{view}&nbsp;{delete}',
                 'buttons' => [
                     'view' => function ($url, $model) {
                         $options = [
-                        'title' => Yii::t('cover', 'View'),
-                        'aria-label' => Yii::t('cover', 'View'),
+                        'title' => Yii::t('app', 'View'),
+                        'aria-label' => Yii::t('app', 'View'),
                         'data-pjax' => '0',
                         'class' => 'btn btn-sm btn-primary',
                         'type' => 'button',
                         ];
                         $url = ['view','id'=>$model->id];
-                        return Html::a(Yii::t('cover', 'View'), $url, $options);
+                        return Html::a(Yii::t('app', 'View'), $url, $options);
                     },
                     'delete' => function ($url, $model) {
                         $options = [
-                            'title' => Yii::t('cover', 'Delete'),
-                            'aria-label' => Yii::t('cover', 'Delete'),
+                            'title' => Yii::t('app', 'Delete'),
+                            'aria-label' => Yii::t('app', 'Delete'),
                             'data-pjax' => '0',
                             'class' => 'btn btn-sm btn-danger',
                             'type' => 'button',
                             'data' => [
-                                'confirm' => Yii::t('cover', 'Are you sure you want to disable this item?'),
+                                'confirm' => Yii::t('app', 'Are you sure you want to disable this item?'),
                                 'method' => 'post',
                             ],
                         ];
                         $url = ["delete",'id'=>$model->id];
-                        return Html::a(Yii::t('cover', 'Delete'), $url, $options);
+                        return Html::a(Yii::t('app', 'Delete'), $url, $options);
                     },
                 ]
             ],

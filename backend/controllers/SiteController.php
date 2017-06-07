@@ -181,7 +181,7 @@ class SiteController extends Controller
             $admin->setPassword($model->password);
             $admin->generateAuthKey();
             if ($admin->save()) {
-                Yii::$app->getSession()->setFlash('success', Yii::t('cover', 'New password was saved.'));
+                Yii::$app->getSession()->setFlash('success', Yii::t('app', 'New password was saved.'));
             }
             return $this->redirect(['change-password']);
         }

@@ -10,6 +10,8 @@ use yii\web\IdentityInterface;
 use rbac\admin\components\Configs;
 use rbac\admin\models\Department;
 use rbac\admin\models\Assignments;
+use yii\helpers\ArrayHelper;
+
 /**
  * User model
  *
@@ -31,6 +33,9 @@ class User extends ActiveRecord implements IdentityInterface
     const STATUS_INACTIVE = 0;
     const STATUS_ACTIVE = 10;
 
+    public $password = '';
+    public $repassword = '';
+    
     /**
      * @inheritdoc
      */
@@ -195,6 +200,11 @@ class User extends ActiveRecord implements IdentityInterface
     {
         return Configs::userDb();
     }
+    public static function getArrayDepartment()
+    {
+        return ArrayHelper::map(Department::find()->all(), 'id', 'dep_name');
+    }
+    
     public function getDepartment(){
         return $this->hasOne(Department::className(), ['id' => 'department_id']);
     }

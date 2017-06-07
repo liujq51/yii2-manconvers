@@ -8,7 +8,7 @@ use yii\widgets\DetailView;
 
 $this->title = $model->name;
 $this->params['breadcrumbs'][] = ['label' => Yii::t('rbac-admin', 'Menus'), 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
+$this->params['breadcrumbs'][] = Yii::t('menu',$this->title);
 ?>
 <div class="menu-view  container-fluid">
     <p>
@@ -28,7 +28,7 @@ $this->params['breadcrumbs'][] = $this->title;
     DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'menuParent.name:text:Parent',
+            'menuParent.name:text:'.Yii::t('rbac-admin', 'Parent'),
             'name',
             'route',
             'order',

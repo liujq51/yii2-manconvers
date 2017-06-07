@@ -14,11 +14,11 @@ use yii\helpers\ArrayHelper;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'username')->textInput(['maxlength' => 255]) ?>
+    <?= $form->field($model, 'username')->textInput(['maxlength' => 255])->label(Yii::t('app', 'Username')) ?>
 
-    <?= $form->field($model, 'email')->textInput(['maxlength' => 255]) ?>
+    <?= $form->field($model, 'email')->textInput(['maxlength' => 255])->label(Yii::t('app', 'Email')) ?>
     
-    <?= $form->field($model, 'mobile')->textInput(['maxlength' => 255]) ?>
+    <?= $form->field($model, 'mobile')->textInput(['maxlength' => 255])->label(Yii::t('app', 'Mobile')) ?>
     
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

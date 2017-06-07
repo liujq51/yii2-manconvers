@@ -94,15 +94,24 @@ return [
 		],
 		'i18n' => [
             'translations' => [
-             'cover*' => [
+             'app*' => [
                 'class' => 'yii\i18n\PhpMessageSource',
                 'basePath' => '@common/messages',
     			'sourceLanguage' => 'en',
                 'fileMap' => [
-                  'cover' => 'cover.php',
-                  'cover/error' => 'error.php',
-					  ],
-                ]
+                  'app' => 'app.php',
+                  //'menu' => 'menu.php',
+				 ],
+                ],
+              '*' => [
+                    'class' => 'yii\i18n\PhpMessageSource',
+                    'basePath' => '@common/messages',
+                    'sourceLanguage' => 'en',
+                    'fileMap' => [
+                        //'app' => 'app.php',
+                        'menu' => 'menu.php',
+                    ],
+                ],
             ],
         ],
     ],

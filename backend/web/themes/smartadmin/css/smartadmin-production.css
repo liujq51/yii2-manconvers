@@ -12829,7 +12829,7 @@ img.away {
   background-image: -o-linear-gradient(top, #f9f9f9, #f2f2f2);
   background-image: linear-gradient(to bottom, #f9f9f9, #f2f2f2);
   border-bottom: 1px solid #DFDFDF;
-  color: #337ab7;
+  color: #DD7C37;
   text-align: center;
   padding: 0;
   width: 218px;
@@ -12844,14 +12844,14 @@ img.away {
 }
 .minifyme:hover {
   background: #f2f2f2;
-  color: #000;
+  color: #DD7C37;
   right: 0px;
   width: 218px;
   padding-right: 0px;
 }
 .minified .minifyme {
   right: 0px;
-  color: #000;
+  color: #DD7C37;
   position: relative;
   width: 100%;
   border-radius: 0px;

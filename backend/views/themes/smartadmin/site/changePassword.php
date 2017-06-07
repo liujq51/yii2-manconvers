@@ -14,11 +14,11 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'oldpassword')->passwordInput(['maxlength' => 255])->label(Yii::t('cover', 'Old Password')) ?>
+    <?= $form->field($model, 'oldpassword')->passwordInput(['maxlength' => 255])->label(Yii::t('app', 'Old Password')) ?>
 
-    <?= $form->field($model, 'password')->passwordInput(['maxlength' => 255])->label(Yii::t('cover', 'New password')) ?>
+    <?= $form->field($model, 'password')->passwordInput(['maxlength' => 255])->label(Yii::t('app', 'New Password')) ?>
 
-    <?= $form->field($model, 'repassword')->passwordInput(['maxlength' => 255])->label(Yii::t('cover', 'repassword')) ?>
+    <?= $form->field($model, 'repassword')->passwordInput(['maxlength' => 255])->label(Yii::t('app', 'repassword')) ?>
 
     <div class="form-group">
         <?= Html::submitButton(Yii::t('app', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
