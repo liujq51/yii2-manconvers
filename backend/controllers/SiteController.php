@@ -4,7 +4,7 @@ namespace backend\controllers;
 use Yii;
 use yii\web\Controller;
 use backend\models\LoginForm;
-use backend\models\Admin;
+use rbac\admin\models\User as Admin;
 use yii\filters\VerbFilter;
 use backend\models\PasswordResetRequestForm;
 use backend\models\ResetPasswordForm;
@@ -175,7 +175,7 @@ class SiteController extends Controller
     }
     public function actionChangePassword()
     {
-        $model = new \backend\models\Admin(['scenario' => 'admin-change-password']);
+        $model = new Admin(['scenario' => 'admin-change-password']);
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             $admin = Admin::findOne(Yii::$app->user->identity->id);
             $admin->setPassword($model->password);

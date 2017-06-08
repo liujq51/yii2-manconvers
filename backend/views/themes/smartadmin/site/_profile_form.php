@@ -10,9 +10,16 @@ use yii\helpers\ArrayHelper;
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="user-form">
+<div class="user-profile-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+        <?php $form = ActiveForm::begin([
+        'id' => 'user-profile-form',
+        'options' => ['class' => 'form-horizontal'],
+        'fieldConfig' => [
+            'template' => "{label}\n<div class=\"col-lg-4\">{input}{hint}</div>\n<div class=\"col-lg-5\">{error}</div>",
+            'labelOptions' => ['class' => 'col-lg-2 control-label'],
+        ],
+     ]);?>
 
     <?= $form->field($model, 'username')->textInput(['maxlength' => 255])->label(Yii::t('app', 'Username')) ?>
 
@@ -21,6 +28,7 @@ use yii\helpers\ArrayHelper;
     <?= $form->field($model, 'mobile')->textInput(['maxlength' => 255])->label(Yii::t('app', 'Mobile')) ?>
     
     <div class="form-group">
+        <label class="col-lg-2 control-label" for="">&nbsp;</label>
         <?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
 

@@ -45,7 +45,34 @@ unset($rules[RouteRule::RULE_NAME]);
             [
                 'class' => 'yii\grid\ActionColumn',
                 'template' => '{view}&nbsp;&nbsp;{delete}',
-                
+                'buttons' => [
+                    'view' => function ($url, $model) {
+                        $options = [
+                            'title' => Yii::t('app', 'View'),
+                            'aria-label' => Yii::t('app', 'View'),
+                            'data-pjax' => '0',
+                            'class' => 'btn btn-xs btn-primary',
+                            'type' => 'button',
+                        ];
+                        $url = ['view','id'=>$model->name];
+                        return Html::a('<span class="glyphicon glyphicon-eye-open"></span>', $url, $options);
+                    },
+                    'delete' => function ($url, $model) {
+                        $options = [
+                            'title' => Yii::t('app', 'Delete'),
+                            'aria-label' => Yii::t('app', 'Delete'),
+                            'data-pjax' => '0',
+                            'class' => 'btn btn-xs btn-danger',
+                            'type' => 'button',
+                            'data' => [
+                                'confirm' => Yii::t('app', 'Are you sure you want to disable this item?'),
+                                'method' => 'post',
+                            ],
+                        ];
+                        $url = ["delete",'id'=>$model->name];
+                        return Html::a('<span class="glyphicon glyphicon-trash"></span>', $url, $options);
+                    },
+                    ]
             ],
         ],
     ])

@@ -22,10 +22,10 @@ $this->params['breadcrumbs'][] = $this->title;
         <thead>
         <tr>
             <th style="width: 30px;"><input type="checkbox" name="checkbox_all" id="checkbox_all" value=""/></th>
-            <th>ID</th>
+            <th width="50px">ID</th>
             <th><?= Yii::t('rbac-admin', 'Title') ?> </th>
-            <th><?= Yii::t('rbac-admin', 'Status') ?></th>
-            <th><?= Yii::t('rbac-admin', 'Actions') ?></th>
+            <th width="80px"><?= Yii::t('rbac-admin', 'Status') ?></th>
+            <th width="150px"><?= Yii::t('rbac-admin', 'Actions') ?></th>
 
         </tr>
         </thead>
@@ -47,10 +47,10 @@ $this->params['breadcrumbs'][] = $this->title;
                  echo '<span class="label ' . $class . '">' . Department::getStatusLabels($item['status']) . '</span>';
                  ?></td>
                 <td>
-                    <a href="<?= \Yii::$app->getUrlManager()->createUrl(['/rbac/department/create','parent_id'=>$item['id']]); ?>" title="<?= Yii::t('rbac-admin', 'Add Sub Department');?>" data-pjax="0"><?= Yii::t('rbac-admin', 'Add Sub Department');?></a>
-                    <a href="<?= \Yii::$app->getUrlManager()->createUrl(['/rbac/department/view','id'=>$item['id']]); ?>"" title="<?= Yii::t('rbac-admin', 'View');?>" data-pjax="0"><span class="glyphicon glyphicon-eye-open"></span></a>
-                    <a href="<?= \Yii::$app->getUrlManager()->createUrl(['/rbac/department/update','id'=>$item['id']]); ?>"" title="<?= Yii::t('rbac-admin', 'Update');?>" data-pjax="0"><span class="glyphicon glyphicon-pencil"></span></a>
-                    <a href="<?= \Yii::$app->getUrlManager()->createUrl(['/rbac/department/delete','id'=>$item['id']]); ?>"" title="<?= Yii::t('rbac-admin', 'Delete');?>" data-confirm="<?= Yii::t('cms', 'Are you sure you want to delete this item?');?>" data-method="post" data-pjax="0"><span class="glyphicon glyphicon-trash"></span></a>
+                    <a href="<?= \Yii::$app->getUrlManager()->createUrl(['/rbac/department/create','parent_id'=>$item['id']]); ?>" title="<?= Yii::t('rbac-admin', 'Add Sub Department');?>" data-pjax="0" type="button" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-plus"></span></a>
+                    <a href="<?= \Yii::$app->getUrlManager()->createUrl(['/rbac/department/view','id'=>$item['id']]); ?>" title="<?= Yii::t('rbac-admin', 'View');?>" data-pjax="0" type="button" class="btn btn-xs btn-primary"><span class="glyphicon glyphicon-eye-open"></span></a>
+                    <a href="<?= \Yii::$app->getUrlManager()->createUrl(['/rbac/department/update','id'=>$item['id']]); ?>" title="<?= Yii::t('rbac-admin', 'Update');?>" data-pjax="0" type="button" class="btn btn-xs btn-info"><span class="glyphicon glyphicon-pencil"></span></a>
+                    <a href="<?= \Yii::$app->getUrlManager()->createUrl(['/rbac/department/delete','id'=>$item['id']]); ?>" title="<?= Yii::t('rbac-admin', 'Delete');?>" data-confirm="<?= Yii::t('cms', 'Are you sure you want to delete this item?');?>" data-method="post" data-pjax="0"  type="button" class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-trash"></span></a>
                 </td>
             </tr>
         <?php } ?>

@@ -3,7 +3,9 @@ namespace backend\controllers;
 
 use Yii;
 use yii\web\Controller;
-use backend\models\Admin;
+use rbac;
+#use backend\models\Admin;
+use rbac\admin\models\User as Admin;
 use yii\filters\VerbFilter;
 /**
  * Admin controller

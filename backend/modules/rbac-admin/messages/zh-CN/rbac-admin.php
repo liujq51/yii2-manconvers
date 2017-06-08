@@ -80,4 +80,8 @@ return [
     'Please Filter' => '请选择',
     'Enabled' => '启用',
     'Add Sub Department' => '添加下级单位',
+    'Search for available' => '检索可分配项',
+    'Search for assigned' => '检索已分配项',
+    'Assign' => '分配',
+    'Remove' => '移除',
 ];

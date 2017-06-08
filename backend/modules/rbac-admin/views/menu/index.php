@@ -36,7 +36,35 @@ $this->params['breadcrumbs'][] = $this->title;
             'order',
                 [
                     'class' => 'yii\grid\ActionColumn',
-                    'template' => '{update}&nbsp;&nbsp;{delete}'
+                    'template' => '{update}&nbsp;&nbsp;{delete}',
+                    'buttons' => [
+                        'update' => function ($url, $model) {
+                            $options = [
+                                'title' => Yii::t('app', 'Update'),
+                                'aria-label' => Yii::t('app', 'Update'),
+                                'data-pjax' => '0',
+                                'class' => 'btn btn-xs btn-primary',
+                                'type' => 'button',
+                            ];
+                            $url = ['update','id'=>$model->id];
+                            return Html::a('<span class="glyphicon glyphicon-eye-open"></span>', $url, $options);
+                        },
+                        'delete' => function ($url, $model) {
+                            $options = [
+                                'title' => Yii::t('app', 'Delete'),
+                                'aria-label' => Yii::t('app', 'Delete'),
+                                'data-pjax' => '0',
+                                'class' => 'btn btn-xs btn-danger',
+                                'type' => 'button',
+                                'data' => [
+                                    'confirm' => Yii::t('app', 'Are you sure you want to disable this item?'),
+                                    'method' => 'post',
+                                ],
+                            ];
+                            $url = ["delete",'id'=>$model->id];
+                            return Html::a('<span class="glyphicon glyphicon-trash"></span>', $url, $options);
+                        },
+                      ]
                 ],
         ],
     ]);

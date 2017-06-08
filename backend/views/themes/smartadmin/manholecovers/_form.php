@@ -28,7 +28,7 @@ use mihaildev\ckeditor\CKEditor;
     <?= $form->field($model, 'status')->textInput() ?>
     
     <div class="form-group">
-    <label class="col-lg-2 control-label" for="">&nbsp;</label>
+        <label class="col-lg-2 control-label" for="">&nbsp;</label>
         <?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
     <?php ActiveForm::end(); ?>

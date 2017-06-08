@@ -3,7 +3,7 @@ namespace backend\models;
 
 use yii\base\Model;
 use Yii;
-use backend\models\Admin;
+use rbac\admin\models\User as Admin;
 
 /**
  * Password reset request form
@@ -23,7 +23,7 @@ class PasswordResetRequestForm extends Model
             ['email', 'email'],
             ['email', 'exist',
             'targetClass' => '\admin\models\Admin',
-            'filter' => ['status' => Admin::STATUS_ACTIVE],
+            'filter' => ['status' => Admin::STATUS_ENABLED],
             'message' => Yii::t('app', 'There is no user with such email.')
             ],
         ];
@@ -55,7 +55,7 @@ class PasswordResetRequestForm extends Model
     {
         /* @var $user User */
         $admin = Admin::findOne([
-            'status' => Admin::STATUS_ACTIVE,
+            'status' => Admin::STATUS_ENABLED,
             'email' => $this->email,
         ]);
 

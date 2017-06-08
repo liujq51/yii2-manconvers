@@ -104,7 +104,7 @@ class UserController extends Controller
         $model = $this->findModel($id);
     
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->app_id]);
+            return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('update', [
                 'model' => $model,
@@ -123,7 +123,29 @@ class UserController extends Controller
 
         return $this->redirect(['index']);
     }
-
+    /**
+     * Batch delete existing Manholecovers models.
+     * If deletion is successful, the browser will be redirected to the 'index' page.
+     * @param array $ids
+     * @return mixed
+     */
+    public function actionBatchUpdateStatus()
+    {
+        //if(!Yii::$app->user->can('deleteYourAuth')) throw new ForbiddenHttpException(Yii::t('app', 'No Auth'));
+        $ids = Yii::$app->request->post('ids');
+        $statusType = Yii::$app->request->post('statusType');
+        $status = constant('\rbac\admin\models\User::'.$statusType);
+        if (is_array($ids)) {
+            foreach ($ids as $id) {
+                /*$this->findModel($id)->delete();*/
+                $model = $this->findModel($id);
+                $model->status = $status;
+                $model->save();
+            }
+        }
+    
+        return $this->redirect(['index']);
+    }
     /**
      * Login
      * @return string
@@ -245,8 +267,8 @@ class UserController extends Controller
     {
         /* @var $user User */
         $user = $this->findModel($id);
-        if ($user->status == User::STATUS_INACTIVE) {
-            $user->status = User::STATUS_ACTIVE;
+        if ($user->status == User::STATUS_DISABLED) {
+            $user->status = User::STATUS_ENABLED;
             if ($user->save()) {
                 return $this->goHome();
             } else {

@@ -133,22 +133,24 @@ class ManholecoversController extends Controller
      * @param array $ids
      * @return mixed
      */
-    public function actionBatchDisabled()
+    public function actionBatchUpdateStatus()
     {
         //if(!Yii::$app->user->can('deleteYourAuth')) throw new ForbiddenHttpException(Yii::t('app', 'No Auth'));
-    
         $ids = Yii::$app->request->post('ids');
+        $statusType = Yii::$app->request->post('statusType');
+        $status = constant('\backend\models\Manholecovers::'.$statusType);
         if (is_array($ids)) {
             foreach ($ids as $id) {
                 /*$this->findModel($id)->delete();*/
                 $model = $this->findModel($id);
-                $model->status = Manholecovers::STATUS_DISABLED;
+                $model->status = $status;
                 $model->save();
             }
         }
     
-        return $this->redirect(['index']);
+        return $this->redirect(Yii::$app->request->getReferrer());
     }
+    
     /**
      * Finds the Manholecovers model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.

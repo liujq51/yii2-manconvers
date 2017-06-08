@@ -64,10 +64,10 @@ class DepartmentController extends Controller
     public function actionCreate()
     {
         $model = new Department();
-        $model->load(Yii::$app->request->post()) && $model->save();
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
+            $model->load(['dep_get' => Yii::$app->request->get()],'dep_get');
             return $this->render('create', [
                 'model' => $model,
             ]);

@@ -34,7 +34,7 @@ return [
 			'controllerMap' => [  
 				'assignment' => [  
 					'class' => 'rbac\admin\controllers\AssignmentController',  
-					'userClassName' => 'backend\models\Admin',  
+					'userClassName' => 'rbac\admin\models\User',  
 					'idField' => 'id'  
 				]  
 			],  
@@ -58,7 +58,7 @@ return [
 	],
     'components' => [
         'user' => [
-            'identityClass' => 'backend\models\Admin',
+            'identityClass' => 'rbac\admin\models\User',
             'enableAutoLogin' => true,
         ],
 
@@ -120,6 +120,7 @@ return [
 		'allowActions' => [
 			//允许访问的节点，可自行添加
             'site/*',
+		    'site/index',
 		],
 	],
     'params' => $params,

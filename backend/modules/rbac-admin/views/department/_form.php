@@ -13,7 +13,8 @@ unset($parentCategory[$model->id]);
 ?>
 <div class="user-form">
 
-    <?php $form = ActiveForm::begin([
+    <?php 
+       $form = ActiveForm::begin([
         'id' => 'mend-form',
         'options' => ['class' => 'form-horizontal'],
         'fieldConfig' => [

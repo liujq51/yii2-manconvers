@@ -42,7 +42,7 @@ class Department extends \yii\db\ActiveRecord
     {
         return [
             [['parent_id','status'], 'integer'],
-            [['created_at', 'updated_at','id'], 'safe'],
+            [['created_at', 'updated_at','id','parent_id'], 'safe'],
             [['dep_name','desc'],'string'],
         ];
     }

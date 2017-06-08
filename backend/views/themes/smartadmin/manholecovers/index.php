@@ -8,7 +8,7 @@ use backend\models\Manholecovers;
 /* @var $searchModel admin\models\AppSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('app', 'Manhole cover');
+$this->title = Yii::t('app', 'Manhole Cover');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="app-index">
@@ -16,9 +16,10 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a(Yii::t('app', 'Create manhole cover'), ['create'], ['class' => 'btn btn-success']) ?>
-        <?= Html::a(Yii::t('app', 'Batch ') . Yii::t('app', 'Disabled'), '#', ['class' => 'btn btn-info', 'id' => 'batchDisabled']) ?>
-        <?= Html::a(Yii::t('app', 'Batch ') . Yii::t('app', 'Delete'), '#', ['class' => 'btn btn-danger', 'id' => 'batchDelete']) ?>
+        <?= Html::a(Yii::t('app', 'Create Manhole Cover'), ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a(Yii::t('app', 'Batch ') . Yii::t('app', 'Enabled'), '#', ['class' => 'btn btn-primary', 'id' => 'batchEnabled','data-type'=> 'STATUS_ENABLED']) ?>
+        <?= Html::a(Yii::t('app', 'Batch ') . Yii::t('app', 'Disabled'), '#', ['class' => 'btn btn-info', 'id' => 'batchDisabled','data-type'=> 'STATUS_DISABLED']) ?>
+        <?= Html::a(Yii::t('app', 'Batch ') . Yii::t('app', 'Delete'), '#', ['class' => 'btn btn-danger', 'id' => 'batchDelete','data-type'=> 'STATUS_DELETED']) ?>
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -26,6 +27,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             [
                 'class' => 'yii\grid\CheckboxColumn',
+                'options' => ['width' => '30px;'],
             ],
 
             'cover_id',
@@ -61,7 +63,10 @@ $this->params['breadcrumbs'][] = $this->title;
                     ['class' => 'form-control', 'prompt' => Yii::t('app', 'Please Filter')]
                 )
             ],
-            'construction_time',
+            [
+                'attribute' => 'construction_time',
+                'options' => ['width' => '100px;'],
+            ],
             // 'remark',
             // 'status',
             // 'createat',
@@ -69,7 +74,7 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'class' => 'yii\grid\ActionColumn',
                 'header' => Yii::t('app', 'Action'),
-                'options' => ['width' => '200px;'],
+                'options' => ['width' => '150px;'],
                 'template' => '{view}&nbsp;{delete}',
                 'buttons' => [
                     'view' => function ($url, $model) {
@@ -77,18 +82,18 @@ $this->params['breadcrumbs'][] = $this->title;
                         'title' => Yii::t('app', 'View'),
                         'aria-label' => Yii::t('app', 'View'),
                         'data-pjax' => '0',
-                        'class' => 'btn btn-sm btn-primary',
+                        'class' => 'btn btn-xs btn-primary',
                         'type' => 'button',
                         ];
                         $url = ['view','id'=>$model->id];
-                        return Html::a(Yii::t('app', 'View'), $url, $options);
+                        return Html::a('<span class="glyphicon glyphicon-eye-open"></span>', $url, $options);
                     },
                     'delete' => function ($url, $model) {
                         $options = [
                             'title' => Yii::t('app', 'Delete'),
                             'aria-label' => Yii::t('app', 'Delete'),
                             'data-pjax' => '0',
-                            'class' => 'btn btn-sm btn-danger',
+                            'class' => 'btn btn-xs btn-danger',
                             'type' => 'button',
                             'data' => [
                                 'confirm' => Yii::t('app', 'Are you sure you want to disable this item?'),
@@ -96,7 +101,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             ],
                         ];
                         $url = ["delete",'id'=>$model->id];
-                        return Html::a(Yii::t('app', 'Delete'), $url, $options);
+                        return Html::a('<span class="glyphicon glyphicon-trash"></span>', $url, $options);
                     },
                 ]
             ],
@@ -104,26 +109,21 @@ $this->params['breadcrumbs'][] = $this->title;
     ]); ?>
 </div>
 <?php
-$urlBatchDelete = \yii\helpers\Url::to(['/manholecovers/batch-delete']);
-$urlBatchDisabled = \yii\helpers\Url::to(['/manholecovers/batch-disabled']);
+$urlBatchUpdateStatus = \yii\helpers\Url::to(['/manholecovers/batch-update-status']);
 $js = <<<JS
 jQuery(document).ready(function() {
-    $("#batchDelete").click(function() {
+    $("#batchDelete,#batchDisabled,#batchEnabled").click(function() {
         var keys = $("#w0").yiiGridView("getSelectedRows");
+        var statusType = $(this).data("type");
+        if(keys.length ==0){
+            alert('请选择操作节点。');
+            return ;
+        }
         $.ajax({
             type: "POST",
-            url: "{$urlBatchDelete}",
+            url: "{$urlBatchUpdateStatus}",
             dataType: "json",
-            data: {ids: keys}
-        });
-    });
-    $("#batchDisabled").click(function() {
-        var keys = $("#w0").yiiGridView("getSelectedRows");
-        $.ajax({
-            type: "POST",
-            url: "{$urlBatchDisabled}",
-            dataType: "json",
-            data: {ids: keys}
+            data: {ids: keys,statusType:statusType}
         });
     });
 });

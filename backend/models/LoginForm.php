@@ -3,6 +3,7 @@ namespace backend\models;
 
 use Yii;
 use yii\base\Model;
+use rbac\admin\models\User as Admin;
 
 /**
  * Login form

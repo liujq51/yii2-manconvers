@@ -30,11 +30,13 @@ use yii\helpers\ArrayHelper;
  */
 class User extends ActiveRecord implements IdentityInterface
 {
-    const STATUS_INACTIVE = 0;
-    const STATUS_ACTIVE = 10;
+    const STATUS_DISABLED = -1;
+    const STATUS_ENABLED =  1;
+    const STATUS_DELETED = -2;
 
     public $password = '';
     public $repassword = '';
+    public $oldpassword = '';
     
     /**
      * @inheritdoc
@@ -60,8 +62,19 @@ class User extends ActiveRecord implements IdentityInterface
     public function rules()
     {
         return [
-            ['status', 'default', 'value' => self::STATUS_ACTIVE],
-            ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_INACTIVE]],
+            ['status', 'default', 'value' => self::STATUS_ENABLED],
+            ['status', 'in', 'range' => [self::STATUS_ENABLED, self::STATUS_DELETED,self::STATUS_DISABLED]],
+            ['username','trim', 'on' => ['admin-profile']],
+            [['username'],'required', 'on' => ['admin-profile']],
+            ['username', 'match', 'pattern' => '/^[a-zA-Z0-9_-]+$/', 'on' => ['admin-profile']],
+            [['username'], 'string', 'min'=>3,'max' => 100, 'on' => ['admin-profile']],
+            [['username','email'],'unique', 'on' => ['admin-profile']],
+            ['mobile','integer', 'on' => ['admin-profile']],
+            ['email','email', 'on' => ['admin-profile']],
+            [['password', 'repassword', 'oldpassword'], 'required', 'on' => ['admin-change-password']],
+            [['password', 'repassword', 'oldpassword'], 'string', 'min' => 5, 'max' => 30, 'on' => ['admin-change-password']],
+            
+            ['oldpassword', 'validateOldPassword', 'on' => ['admin-change-password']],
         ];
     }
 
@@ -70,7 +83,7 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public static function findIdentity($id)
     {
-        return static::findOne(['id' => $id, 'status' => self::STATUS_ACTIVE]);
+        return static::findOne(['id' => $id, 'status' => self::STATUS_ENABLED]);
     }
 
     /**
@@ -89,7 +102,7 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public static function findByUsername($username)
     {
-        return static::findOne(['username' => $username, 'status' => self::STATUS_ACTIVE]);
+        return static::findOne(['username' => $username, 'status' => self::STATUS_ENABLED]);
     }
 
     /**
@@ -106,7 +119,7 @@ class User extends ActiveRecord implements IdentityInterface
 
         return static::findOne([
                 'password_reset_token' => $token,
-                'status' => self::STATUS_ACTIVE,
+                'status' => self::STATUS_ENABLED,
         ]);
     }
 
@@ -221,5 +234,39 @@ class User extends ActiveRecord implements IdentityInterface
         ->leftJoin(['d'=>$depTableName], 'u.department_id=d.id')
         ->distinct()
         ->all(static::getDb());
+    }
+    /**
+     *
+     * @param string $id
+     * @return string|string[]
+     */
+    public static function getStatusLabels($id = null)
+    {
+        $data = [
+            self::STATUS_DISABLED => Yii::t('app', 'Disabled'),
+            self::STATUS_ENABLED => Yii::t('app', 'Enabled'),
+        ];
+    
+        if ($id !== null) {
+            return isset($data[$id])?$data[$id]:'';
+        } else {
+            return $data;
+        }
+    }
+    /**
+     * Validates the password.
+     * This method serves as the inline validation for password.
+     *
+     * @param string $attribute the attribute currently being validated
+     * @param array $params the additional name-value pairs given in the rule
+     */
+    public function validateOldPassword($attribute, $params)
+    {
+        if (!$this->hasErrors()) {
+            $admin = self::findOne(Yii::$app->user->identity->id);
+            if (!$admin || !$admin->validatePassword($this->oldpassword)) {
+                $this->addError($attribute, Yii::t('error', 'Incorrect old password.'));
+            }
+        }
     }
 }
