@@ -12,6 +12,7 @@ api/runtime/*
 api/web/assets/*
 # yii console command
 /yii
+backend/web/uploads/*
 
 # phpstorm project files
 .idea
