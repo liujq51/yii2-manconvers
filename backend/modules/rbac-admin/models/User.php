@@ -37,6 +37,7 @@ class User extends ActiveRecord implements IdentityInterface
     public $password = '';
     public $repassword = '';
     public $oldpassword = '';
+    public $imageUrl;
     
     /**
      * @inheritdoc

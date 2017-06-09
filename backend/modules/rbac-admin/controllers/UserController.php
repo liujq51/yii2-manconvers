@@ -23,6 +23,7 @@ use yii\mail\BaseMailer;
  */
 class UserController extends Controller
 {
+    
     private $_oldMailPath;
 
     /**
@@ -41,32 +42,23 @@ class UserController extends Controller
             ],
         ];
     }
-
-    /**
-     * @inheritdoc
-     */
-    public function beforeAction($action)
+    public function actions()
     {
-        if (parent::beforeAction($action)) {
-            if (Yii::$app->has('mailer') && ($mailer = Yii::$app->getMailer()) instanceof BaseMailer) {
-                /* @var $mailer BaseMailer */
-                $this->_oldMailPath = $mailer->getViewPath();
-                $mailer->setViewPath('@rbac/admin/mail');
-            }
-            return true;
-        }
-        return false;
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function afterAction($action, $result)
-    {
-        if ($this->_oldMailPath !== null) {
-            Yii::$app->getMailer()->setViewPath($this->_oldMailPath);
-        }
-        return parent::afterAction($action, $result);
+        return [
+            'crop'=>[
+                'class' => 'hyii2\avatar\CropAction',
+                'config'=>[
+                    'bigImageWidth' => '200',     //大图默认宽度
+                    'bigImageHeight' => '200',    //大图默认高度
+                    'middleImageWidth'=> '100',   //中图默认宽度
+                    'middleImageHeight'=> '100',  //中图图默认高度
+                    'smallImageWidth' => '50',    //小图默认宽度
+                    'smallImageHeight' => '50',   //小图默认高度
+                    //头像上传目录（注：目录前不能加"/"）
+                    'uploadPath' => 'uploads/avatar',
+                ]
+            ]
+        ];
     }
 
     /**
