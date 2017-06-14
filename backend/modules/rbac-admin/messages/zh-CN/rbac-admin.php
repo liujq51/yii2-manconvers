@@ -84,4 +84,7 @@ return [
     'Search for assigned' => '检索已分配项',
     'Assign' => '分配',
     'Remove' => '移除',
+    'Password' => '密码',
+    'Confirm password' => '确认密码',
+    'Email' => '邮箱',
 ];

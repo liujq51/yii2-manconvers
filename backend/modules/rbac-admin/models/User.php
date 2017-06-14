@@ -37,7 +37,6 @@ class User extends ActiveRecord implements IdentityInterface
     public $password = '';
     public $repassword = '';
     public $oldpassword = '';
-    public $imageUrl;
     
     /**
      * @inheritdoc
@@ -65,6 +64,7 @@ class User extends ActiveRecord implements IdentityInterface
         return [
             ['status', 'default', 'value' => self::STATUS_ENABLED],
             ['status', 'in', 'range' => [self::STATUS_ENABLED, self::STATUS_DELETED,self::STATUS_DISABLED]],
+            ['avatar_url','safe', 'on'=>['admin-profile']],
             ['username','trim', 'on' => ['admin-profile']],
             [['username'],'required', 'on' => ['admin-profile']],
             ['username', 'match', 'pattern' => '/^[a-zA-Z0-9_-]+$/', 'on' => ['admin-profile']],
