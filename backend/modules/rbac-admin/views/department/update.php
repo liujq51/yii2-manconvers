@@ -7,8 +7,7 @@ use yii\helpers\Html;
 
 $this->title = Yii::t('rbac-admin', 'Update') . Yii::t('rbac-admin', 'Department') . ' ' . $model->dep_name;
 $this->params['breadcrumbs'][] = ['label' => Yii::t('rbac-admin', 'Department'), 'url' => ['/rbac/department']];
-$this->params['breadcrumbs'][] = ['label' => $model->dep_name, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = Yii::t('rbac-admin', 'Update');
+$this->params['breadcrumbs'][] = ['label' => $model->dep_name];
 ?>
 <div class="user-update">
 

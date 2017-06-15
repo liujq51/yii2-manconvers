@@ -41,9 +41,9 @@ class SiteController extends Controller
             ],
 			'captcha' => [
 				'class' => 'yii\captcha\CaptchaAction',
-				'height' => 50,
-				'width' => 120,
-				'minLength' => 5,
+				'height' => 31,
+				'width' => 90,
+				'minLength' => 4,
 				'maxLength' => 6
 			],
             'crop'=>[

@@ -9,7 +9,7 @@ return [
     'Enabled' => '启用',
     'Rbox management system' => 'Rbox 后台管理',
     '<b style="color:#DD7C37;">Rbox</b><b> mgmt system</b>' => '<b style="color:#DD7C37;">Rbox</b><b> 后台管理</b>',
-    'Monitoring system' => '<b style="color:#DD7C37;">井盖监控系统</b>',
+    'Monitoring system' => '<b style="color:#FFF;">井盖监控系统</b>',
 	'Manhole Cover' => '井盖列表',
 	'Manhole Cover Id' => '井盖编号',
 	'Manhole Cover Name' => '井盖名称',
@@ -46,4 +46,6 @@ return [
     'Department' => '单位',
     'Update profile success.' => '个人信息更新成功。',
     'Update info success.' => '信息更新成功。',
+    'Enter your email and to receive instructions.' => '请输入您的邮箱。',
+    'Captcha' => '验证码',
 ];

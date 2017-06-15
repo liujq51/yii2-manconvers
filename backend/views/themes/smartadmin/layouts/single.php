@@ -43,7 +43,7 @@ $this->registerCss('
 ');
 ?>
 </head>
-<body class="login-layout bg">
+<body class="login-layout bg" style='background: url("/images/bg001.jpg") 0% 0% / cover;'>
 <?php $this->beginBody() ?>
 	<div class="main-container">
 	<div class="main-content">

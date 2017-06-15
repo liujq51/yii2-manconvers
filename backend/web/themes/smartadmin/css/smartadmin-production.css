@@ -12829,7 +12829,7 @@ img.away {
   background-image: -o-linear-gradient(top, #f9f9f9, #f2f2f2);
   background-image: linear-gradient(to bottom, #f9f9f9, #f2f2f2);
   border-bottom: 1px solid #DFDFDF;
-  color: #DD7C37;
+  color: #000;
   text-align: center;
   padding: 0;
   width: 218px;

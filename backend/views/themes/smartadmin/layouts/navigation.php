@@ -36,5 +36,6 @@ use rbac\admin\components\MenuHelper;
                 ?>
 
 		</nav>
+
 		</aside>
 		<!-- END NAVIGATION -->

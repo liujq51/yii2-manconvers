@@ -10932,7 +10932,7 @@ td .lbl:only-child {
   transform: scale(1.2);
 }
 .widget-body {
-  background-color: #FFF;
+  background-color: rgba(255,255,255, 0.2);
 }
 .widget-main {
   padding: 12px;
@@ -12527,7 +12527,7 @@ td .lbl:only-child {
   border-bottom: none;
   box-shadow: none;
   padding: 6px;
-  background-color: #394557;
+  background-color: rgba(255,255,255, 0.2);
   -moz-transform: scale(0,1) translate(-150px);
   -webkit-transform: scale(0,1) translate(-150px);
   -o-transform: scale(0,1) translate(-150px);
@@ -12550,7 +12550,7 @@ td .lbl:only-child {
 }
 .login-layout .widget-box .widget-main {
   padding: 16px 36px 36px;
-  background: #F7F7F7;
+  background: rgba(255,255,255, 0.2);
 }
 .login-layout .widget-box .widget-main form {
   margin: 0;

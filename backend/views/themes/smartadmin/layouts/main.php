@@ -15,7 +15,7 @@ $this->beginPage();
 		<?= $this->render('//layouts/header.php') ?>
 		<?= $this->render('//layouts/navigation.php') ?>
 		<!-- #MAIN PANEL -->
-		<div id="main" role="main">
+		<div id="main" role="main" class="clearfix">
 			<!-- RIBBON -->
 			<div id="ribbon">
 				<!-- breadcrumb -->

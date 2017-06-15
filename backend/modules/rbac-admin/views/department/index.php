@@ -48,7 +48,6 @@ $this->params['breadcrumbs'][] = $this->title;
                  ?></td>
                 <td>
                     <a href="<?= \Yii::$app->getUrlManager()->createUrl(['/rbac/department/create','parent_id'=>$item['id']]); ?>" title="<?= Yii::t('rbac-admin', 'Add Sub Department');?>" data-pjax="0" type="button" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-plus"></span></a>
-                    <a href="<?= \Yii::$app->getUrlManager()->createUrl(['/rbac/department/view','id'=>$item['id']]); ?>" title="<?= Yii::t('rbac-admin', 'View');?>" data-pjax="0" type="button" class="btn btn-xs btn-primary"><span class="glyphicon glyphicon-eye-open"></span></a>
                     <a href="<?= \Yii::$app->getUrlManager()->createUrl(['/rbac/department/update','id'=>$item['id']]); ?>" title="<?= Yii::t('rbac-admin', 'Update');?>" data-pjax="0" type="button" class="btn btn-xs btn-info"><span class="glyphicon glyphicon-pencil"></span></a>
                     <a href="<?= \Yii::$app->getUrlManager()->createUrl(['/rbac/department/delete','id'=>$item['id']]); ?>" title="<?= Yii::t('rbac-admin', 'Delete');?>" data-confirm="<?= Yii::t('cms', 'Are you sure you want to delete this item?');?>" data-method="post" data-pjax="0"  type="button" class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-trash"></span></a>
                 </td>
