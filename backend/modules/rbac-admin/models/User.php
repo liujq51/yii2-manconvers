@@ -65,6 +65,7 @@ class User extends ActiveRecord implements IdentityInterface
             ['status', 'default', 'value' => self::STATUS_ENABLED],
             ['status', 'in', 'range' => [self::STATUS_ENABLED, self::STATUS_DELETED,self::STATUS_DISABLED]],
             ['avatar_url','safe', 'on'=>['admin-profile']],
+            ['dep_id', 'integer'],
             ['username','trim', 'on' => ['admin-profile']],
             [['username'],'required', 'on' => ['admin-profile']],
             ['username', 'match', 'pattern' => '/^[a-zA-Z0-9_-]+$/', 'on' => ['admin-profile']],

@@ -42,9 +42,9 @@ class SiteController extends Controller
 			'captcha' => [
 				'class' => 'yii\captcha\CaptchaAction',
 				'height' => 50,
-				'width' => 80,
-				'minLength' => 4,
-				'maxLength' => 4
+				'width' => 120,
+				'minLength' => 5,
+				'maxLength' => 6
 			]
         ];
     }
@@ -162,13 +162,16 @@ class SiteController extends Controller
     }
     public function actionProfile()
     {
-        $model = Admin::findIdentity(Yii::$app->user->identity->id);
+        $userId = Yii::$app->user->identity->id;
+        $model = Admin::findIdentity($userId);
         $model->setScenario('admin-profile');
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            Yii::$app->session->setFlash('success', Yii::t('app', 'Update profile success.'));
             return $this->redirect(['profile']);
         } else {
             return $this->render('profile', [
                 'model' => $model,
+                'avatarPath' =>  '/'.$userId,
             ]);
         }
         return false;

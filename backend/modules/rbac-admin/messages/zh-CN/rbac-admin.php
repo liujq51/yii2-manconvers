@@ -87,4 +87,5 @@ return [
     'Password' => '密码',
     'Confirm password' => '确认密码',
     'Email' => '邮箱',
+    'Mobile' => '手机',
 ];

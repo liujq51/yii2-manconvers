@@ -38,7 +38,7 @@ use yii\bootstrap\Nav;
 					<!-- end notification content -->
 
 					<!-- footer: refresh area -->
-					<span> Last updated on: 12/12/2013 9:43AM
+					<span>
 						<button type="button" data-loading-text="<i class='fa fa-refresh fa-spin'></i> Loading..." class="btn btn-xs btn-default pull-right">
 							<i class="fa fa-refresh"></i>
 						</button> </span>
@@ -80,8 +80,8 @@ use yii\bootstrap\Nav;
 				<!-- Top menu profile link : this shows only when top menu is active -->
 				<ul id="mobile-profile-img" class="header-dropdown-list hidden-xs padding-5">
 					<li class="">
-						<a href="#" class="dropdown-toggle no-margin userdropdown" data-toggle="dropdown"> 
-							<img src="/themes/smartadmin/img/avatars/sunny.png" alt="John Doe" class="online" />  
+						<a href="#" class="dropdown-toggle no-margin userdropdown" data-toggle="dropdown">
+							<img src="<?= (Yii::$app->user->getIdentity()->avatar_url)?:'/themes/smartadmin/img/avatars/sunny-big.png';?>" alt="John Doe" class="online" />
 						</a>
 						<ul class="dropdown-menu pull-right">
 							<li>

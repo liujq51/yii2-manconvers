@@ -23,12 +23,12 @@ unset($parentCategory[$model->id]);
             'labelOptions' => ['class' => 'col-lg-2 control-label'],
         ],
     ]); ?>
-    <?= $form->field($model, 'id')->hiddenInput()->label('')?>
     <?= $form->field($model, 'avatar_url')->hiddenInput(['id'=>'crop-avatar-submit-url'])->label('')?>
     <?= $form->field($model, 'username')->textInput(['maxlength' => 255])->label(Yii::t('rbac-admin', 'Username')) ?>
     <?= $form->field($model, 'password')->passwordInput(['maxlength' => 255])->label(Yii::t('rbac-admin', 'Password')) ?>
     <?= $form->field($model, 'repassword')->passwordInput(['maxlength' => 255])->label(Yii::t('rbac-admin', 'Confirm password')) ?>
     <?= $form->field($model, 'email')->textInput(['maxlength' => 255])->label(Yii::t('rbac-admin', 'Email')) ?>
+    <?= $form->field($model, 'mobile')->textInput(['maxlength' => 255])->label(Yii::t('rbac-admin', 'Mobile')) ?>
     <?= $form->field($model, 'dep_id')->dropDownList($parentCategory)->label(Yii::t('rbac-admin', 'Department')) ?>
     <div class="form-group">
         <label class="col-lg-2 col-xs-2 control-label" for="">&nbsp;</label>
@@ -37,5 +37,5 @@ unset($parentCategory[$model->id]);
     <?php ActiveForm::end(); ?>
 </div>
 <div class="col-lg-3 col-xs-6">
-    <?= \hyii2\avatar\AvatarWidget::widget(['imageUrl'=>$model->avatar_url?:'/themes/smartadmin/img/avatars/sunny-big.png']); ?>
+    <?= \hyii2\avatar\AvatarWidget::widget(['imageUrl'=>$model->avatar_url?:'/themes/smartadmin/img/avatars/sunny-big.png','avatarPath'=>$avatarPath]); ?>
 </div>

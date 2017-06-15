@@ -12,6 +12,7 @@ $this->params['breadcrumbs'][] = Yii::t('app', 'Profile');
 
     <?= $this->render('_profile_form', [
         'model' => $model,
+        'avatarPath' => $avatarPath,
     ]) ?>
 
 </div>

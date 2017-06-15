@@ -22,12 +22,12 @@ use yii\widgets\Pjax;
 							<h4 class="header blue lighter bigger"><i class="ace-icon fa fa-coffee green"></i>请输入您的信息</h4>
 							<div class="space-6"></div>
 							<?php $form = ActiveForm::begin(['id' => 'login-form']); ?>
-							<?= $form->field($model, 'username')->label('')->textInput(['autofocus' => true,'placeholder'=>'Username']) ?>
-							<?= $form->field($model, 'password')->label('')->passwordInput(['placeholder'=>'Password']) ?>
-							<?= $form->field($model, 'captcha')->widget(Captcha::className(),
+							<?= $form->field($model, 'username')->label('')->textInput(['autofocus' => true,'placeholder'=>Yii::t('app','Username')]) ?>
+							<?= $form->field($model, 'password')->label('')->passwordInput(['placeholder'=>Yii::t('app','Password')]) ?>
+							<?= $form->field($model, 'captcha')->label(Yii::t('app', 'Captcha'))->widget(Captcha::className(),
 								[
 									'captchaAction' => 'site/captcha',
-									'imageOptions' => ['alt'=>'点击换图','title'=>'点击换图','style'=>'cursor:pointer']
+									'imageOptions' => ['alt'=>'点击换图','title'=>'点击换图','style'=>'cursor:pointer'],
 								]
 							); ?>
 							<?= $form->field($model, 'rememberMe')->label('记住我')->checkbox() ?>

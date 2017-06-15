@@ -41,7 +41,9 @@ class LoginForm extends Model
      */
 	public function attributeLabels(){
 		return [
-			//'captcha'=>'验证码',
+		    'username'=>'账名',
+		    'password' => '密码',
+			'captcha'=>'验证码',
 		];
 	}
 	public function scenarios(){
