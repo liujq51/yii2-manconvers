@@ -50,7 +50,7 @@ $animateIcon = ' <i class="glyphicon glyphicon-refresh glyphicon-refresh-animate
     'title' => Yii::t('rbac-admin', 'Remove'),
 ]);?>
         </div>
-        <div class="col-sm-5">
+        <div class="col-sm-5" >
             <input class="form-control search" data-target="assigned"
                    placeholder="<?=Yii::t('rbac-admin', 'Search for assigned');?>">
             <select multiple size="20" class="form-control list" data-target="assigned">

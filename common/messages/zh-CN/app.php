@@ -45,4 +45,5 @@ return [
     'The uploaded file exceeds the upload_max_filesize directive in php.ini' => '上传文件超过服务器上传文件最大限制。',
     'Department' => '单位',
     'Update profile success.' => '个人信息更新成功。',
+    'Update info success.' => '信息更新成功。',
 ];

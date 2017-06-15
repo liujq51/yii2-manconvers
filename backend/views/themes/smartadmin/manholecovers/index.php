@@ -82,11 +82,11 @@ $this->params['breadcrumbs'][] = $this->title;
                         'title' => Yii::t('app', 'View'),
                         'aria-label' => Yii::t('app', 'View'),
                         'data-pjax' => '0',
-                        'class' => 'btn btn-xs btn-primary',
+                        'class' => 'btn btn-xs btn-info',
                         'type' => 'button',
                         ];
-                        $url = ['view','id'=>$model->id];
-                        return Html::a('<span class="glyphicon glyphicon-eye-open"></span>', $url, $options);
+                        $url = ['update','id'=>$model->id];
+                        return Html::a('<span class="glyphicon glyphicon-pencil"></span>', $url, $options);
                     },
                     'delete' => function ($url, $model) {
                         $options = [

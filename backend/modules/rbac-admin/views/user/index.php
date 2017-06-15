@@ -93,7 +93,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                         'title' => Yii::t('yii', 'Userinfo'),
                                         'aria-label' => Yii::t('yii', 'Userinfo'),
                                         'data-pjax' => '0',
-                                        'class' => 'btn btn-xs btn-primary',
+                                        'class' => 'btn btn-xs btn-info',
                                         'type' => 'button',
                                     ];
                                     $url = "/rbac/user/update?id=".$model->id;
@@ -104,7 +104,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                         'title' => Yii::t('yii', 'Assignments'),
                                         'aria-label' => Yii::t('yii', 'Assignments'),
                                         'data-pjax' => '0',
-                                        'class' => 'btn btn-xs btn-info',
+                                        'class' => 'btn btn-xs btn-default',
                                         'type' => 'button',
                                     ];
                                     $url = "/rbac/assignment/view?id=".$model->id;

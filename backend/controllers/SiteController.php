@@ -45,7 +45,20 @@ class SiteController extends Controller
 				'width' => 120,
 				'minLength' => 5,
 				'maxLength' => 6
-			]
+			],
+            'crop'=>[
+                'class' => 'hyii2\avatar\CropAction',
+                'config'=>[
+                    'bigImageWidth' => '200',     //大图默认宽度
+                    'bigImageHeight' => '200',    //大图默认高度
+                    'middleImageWidth'=> '100',   //中图默认宽度
+                    'middleImageHeight'=> '100',  //中图图默认高度
+                    'smallImageWidth' => '50',    //小图默认宽度
+                    'smallImageHeight' => '50',   //小图默认高度
+                    //头像上传目录（注：目录前不能加"/"）
+                    'uploadPath' => 'uploads/avatar',
+                ]
+            ]
         ];
     }
     public function actionIndex()

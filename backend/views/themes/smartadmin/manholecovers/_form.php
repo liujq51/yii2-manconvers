@@ -7,14 +7,19 @@ use mihaildev\ckeditor\CKEditor;
 /* @var $this yii\web\View */
 /* @var $model admin\models\App */
 /* @var $form yii\widgets\ActiveForm */
+
+$this->registerJsFile('http://api.map.baidu.com/api?v=2.0&ak=jcM1TIy1YKLrb78wGbHoKST86xduLZWV');
+$poiArr = explode(',', $model->poi);
+$this->registerJs("var _poi_lat = {$poiArr[1]},_poi_long = {$poiArr[0]};");
+$this->registerJs($this->render('_script.js'));
 ?>
-<div class="manhole-cover-form">
+<div class="manhole-cover-form col-lg-6">
     <?php $form = ActiveForm::begin([
         'id' => 'manhole-cover-form',
         'options' => ['class' => 'form-horizontal'],
         'fieldConfig' => [
-            'template' => "{label}\n<div class=\"col-lg-4\">{input}{hint}</div>\n<div class=\"col-lg-5\">{error}</div>",
-            'labelOptions' => ['class' => 'col-lg-2 control-label'],
+            'template' => "{label}\n<div class=\"col-lg-9\">{input}{hint}</div>\n<div class=\"col-lg-3\"></div>\n<div class=\"col-lg-9\">{error}</div>",
+            'labelOptions' => ['class' => 'col-lg-3 control-label'],
         ],
      ]);?>
     <?= $form->field($model, 'cover_id')->textInput(['maxlength' => true]) ?>
@@ -32,4 +37,6 @@ use mihaildev\ckeditor\CKEditor;
         <?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
     <?php ActiveForm::end(); ?>
+</div>
+<div class="col-lg-6" id="allmap" style="height:600px;">
 </div>
