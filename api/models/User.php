@@ -23,8 +23,9 @@ use yii\filters\RateLimitInterface;
  */
 class User extends ActiveRecord implements IdentityInterface ,RateLimitInterface
 {
-    const STATUS_DELETED = 0;
-    const STATUS_ACTIVE = 10;
+    const STATUS_DISABLED = -1;
+    const STATUS_ENABLED =  1;
+    const STATUS_DELETED = -2;
 
     public function getRateLimit($request, $action){
         return [4, 10];
@@ -44,7 +45,7 @@ class User extends ActiveRecord implements IdentityInterface ,RateLimitInterface
      */
     public static function tableName()
     {
-        return '{{%user}}';
+        return '{{%admin}}';
     }
 
     /**
@@ -63,8 +64,8 @@ class User extends ActiveRecord implements IdentityInterface ,RateLimitInterface
     public function rules()
     {
         return [
-            ['status', 'default', 'value' => self::STATUS_ACTIVE],
-            ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_DELETED]],
+            ['status', 'default', 'value' => self::STATUS_ENABLED],
+            ['status', 'in', 'range' => [self::STATUS_ENABLED, self::STATUS_DELETED]],
         ];
     }
 	public function fields()
@@ -86,7 +87,7 @@ class User extends ActiveRecord implements IdentityInterface ,RateLimitInterface
      */
     public static function findIdentity($id)
     {
-        return static::findOne(['id' => $id, 'status' => self::STATUS_ACTIVE]);
+        return static::findOne(['id' => $id, 'status' => self::STATUS_ENABLED]);
     }
 
     /**
@@ -94,7 +95,7 @@ class User extends ActiveRecord implements IdentityInterface ,RateLimitInterface
      */
     public static function findIdentityByAccessToken($token, $type = null)
     {
-        return static::findOne(['access_token' => $token, 'status' => self::STATUS_ACTIVE]);
+        return static::findOne(['access_token' => $token, 'status' => self::STATUS_ENABLED]);
         //throw new NotSupportedException('"findIdentityByAccessToken" is not implemented.');
     }
     
@@ -106,7 +107,7 @@ class User extends ActiveRecord implements IdentityInterface ,RateLimitInterface
      */
     public static function findByUsername($username)
     {
-        return static::findOne(['username' => $username, 'status' => self::STATUS_ACTIVE]);
+        return static::findOne(['username' => $username, 'status' => self::STATUS_ENABLED]);
     }
 
     /**
@@ -123,7 +124,7 @@ class User extends ActiveRecord implements IdentityInterface ,RateLimitInterface
 
         return static::findOne([
             'password_reset_token' => $token,
-            'status' => self::STATUS_ACTIVE,
+            'status' => self::STATUS_ENABLED,
         ]);
     }
 

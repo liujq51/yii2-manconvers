@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="language" content="en" />
+        <link href="./assets/b358e5c1/css/bootstrap.css" rel="stylesheet">
+<link href="./assets/8f1402d3/solarized_light.css" rel="stylesheet">
+<link href="./assets/8b9664e6/style.css" rel="stylesheet">
+<script src="./assets/6bfe5f03/jquery.js"></script>
+<script src="./assets/b358e5c1/js/bootstrap.js"></script>
+<script src="./assets/deab3b5f/jssearch.js"></script>    <title>The Definitive Guide to Yii 2.0</title>
+</head>
+<body>
+
+<div class="wrap">
+    <nav id="w3" class="navbar-inverse navbar-fixed-top navbar" role="navigation"><div class="navbar-header"><button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#w3-collapse"><span class="sr-only">Toggle navigation</span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span></button><a class="navbar-brand" href="./guide-index.html">The Definitive Guide to Yii 2.0</a></div><div id="w3-collapse" class="collapse navbar-collapse"><ul id="w4" class="navbar-nav nav"><li><a href="./guide-README.html">Guide</a></li></ul><div class="navbar-form navbar-left" role="search">
+  <div class="form-group">
+    <input id="searchbox" type="text" class="form-control" placeholder="Search">
+  </div>
+</div>
+</div></nav>
+    <div id="search-resultbox" style="display: none;" class="modal-content">
+        <ul id="search-results">
+        </ul>
+    </div>
+
+    
+<div class="row">
+    <div class="col-md-2">
+                <div id="navigation" class="list-group"><a class="list-group-item" href="#navigation-0" data-toggle="collapse" data-parent="#navigation">Getting Started <b class="caret"></b></a><div id="navigation-0" class="submenu panel-collapse collapse"><a class="list-group-item" href="./guide-start-installation.html">Installation</a>
+<a class="list-group-item" href="./guide-start-comparison.html">Difference from basic project template</a>
+<a class="list-group-item" href="./guide-start-composer.html">Configuring Composer</a></div>
+<a class="list-group-item" href="#navigation-1" data-toggle="collapse" data-parent="#navigation">Structure <b class="caret"></b></a><div id="navigation-1" class="submenu panel-collapse collapse"><a class="list-group-item" href="./guide-structure-directories.html">Directories</a>
+<a class="list-group-item" href="./guide-structure-path-aliases.html">Predefined path aliases</a>
+<a class="list-group-item" href="./guide-structure-applications.html">Applications</a>
+<a class="list-group-item" href="./guide-structure-environments.html">Configuration and environments</a></div>
+<a class="list-group-item" href="#navigation-2" data-toggle="collapse" data-parent="#navigation">Additional Topics <b class="caret"></b></a><div id="navigation-2" class="submenu panel-collapse collapse"><a class="list-group-item" href="./guide-topic-link-backend-frontend.html">Creating links from backend to frontend</a>
+<a class="list-group-item" href="./guide-topic-adding-more-apps.html">Adding more applications</a></div></div>    </div>
+    <div class="col-md-9 guide-content" role="main">
+        <h1>Yii 2 Advanced Project Template <span id="yii-2-advanced-project-template"></span><a href="#yii-2-advanced-project-template" class="hashlink">&para;</a></h1>
+<div class="toc"><ol><li><a href="#getting-started">Getting Started</a></li>
+<li><a href="#structure">Structure</a></li>
+<li><a href="#additional-topics">Additional Topics</a></li></ol></div>
+<p>Yii 2 Advanced Project Template is a skeleton <a href="http://www.yiiframework.com/">Yii 2</a> application best for
+developing complex Web applications with multiple tiers.</p>
+<p>The template includes three tiers: front end, back end, and console, each of which
+is a separate Yii application.</p>
+<p>The template is designed to work in a team development environment. It supports
+deploying the application in different environments.</p>
+<p>It also goes a bit further regarding features and provides essential database, signup and password
+restore out of the box.</p>
+<h2>Getting Started <span id="getting-started"></span><a href="#getting-started" class="hashlink">&para;</a></h2><ul>
+<li><a href="guide-start-installation.html">Installation</a></li>
+<li><a href="guide-start-comparison.html">Difference from basic project template</a></li>
+<li><a href="guide-start-composer.html">Configuring Composer</a></li>
+</ul>
+<h2>Structure <span id="structure"></span><a href="#structure" class="hashlink">&para;</a></h2><ul>
+<li><a href="guide-structure-directories.html">Directories</a></li>
+<li><a href="guide-structure-path-aliases.html">Predefined path aliases</a></li>
+<li><a href="guide-structure-applications.html">Applications</a></li>
+<li><a href="guide-structure-environments.html">Configuration and environments</a></li>
+</ul>
+<h2>Additional Topics <span id="additional-topics"></span><a href="#additional-topics" class="hashlink">&para;</a></h2><ul>
+<li><a href="guide-topic-link-backend-frontend.html">Creating links from backend to frontend</a></li>
+<li><a href="guide-topic-adding-more-apps.html">Adding more applications</a></li>
+</ul>
+        <div class="toplink"><a href="#" class="h1" title="go to top"><span class="glyphicon glyphicon-arrow-up"></a></div>
+    </div>
+</div>
+
+
+</div>
+
+<footer class="footer">
+        <p class="pull-right"><small>Page generated on Mon, 19 Jun 2017 14:41:50 +0000</small></p>
+    Powered by <a href="http://www.yiiframework.com/" rel="external">Yii Framework</a></footer>
+
+<script type="text/javascript">jQuery(document).ready(function () {
+    var shiftWindow = function () { scrollBy(0, -50) };
+    if (location.hash) setTimeout(shiftWindow, 1);
+    window.addEventListener("hashchange", shiftWindow);
+var element = document.createElement("script");
+element.src = "./jssearch.index.js";
+document.body.appendChild(element);
+
+var searchBox = $('#searchbox');
+
+// search when typing in search field
+searchBox.on("keyup", function(event) {
+    var query = $(this).val();
+
+    if (query == '' || event.which == 27) {
+        $('#search-resultbox').hide();
+        return;
+    } else if (event.which == 13) {
+        var selectedLink = $('#search-resultbox a.selected');
+        if (selectedLink.length != 0) {
+            document.location = selectedLink.attr('href');
+            return;
+        }
+    } else if (event.which == 38 || event.which == 40) {
+        $('#search-resultbox').show();
+
+        var selected = $('#search-resultbox a.selected');
+        if (selected.length == 0) {
+            $('#search-results').find('a').first().addClass('selected');
+        } else {
+            var next;
+            if (event.which == 40) {
+                next = selected.parent().next().find('a').first();
+            } else {
+                next = selected.parent().prev().find('a').first();
+            }
+            if (next.length != 0) {
+                var resultbox = $('#search-results');
+                var position = next.position();
+
+//              TODO scrolling is buggy and jumps around
+//                resultbox.scrollTop(Math.floor(position.top));
+//                console.log(position.top);
+
+                selected.removeClass('selected');
+                next.addClass('selected');
+            }
+        }
+
+        return;
+    }
+    $('#search-resultbox').show();
+    $('#search-results').html('<li><span class="no-results">No results</span></li>');
+
+    var result = jssearch.search(query);
+
+    if (result.length > 0) {
+        var i = 0;
+        var resHtml = '';
+
+        for (var key in result) {
+            if (i++ > 20) {
+                break;
+            }
+            resHtml = resHtml +
+            '<li><a href="' + result[key].file.u.substr(3) +'"><span class="title">' + result[key].file.t + '</span>' +
+            '<span class="description">' + result[key].file.d + '</span></a></li>';
+        }
+        $('#search-results').html(resHtml);
+    }
+});
+
+// hide the search results on ESC
+$(document).on("keyup", function(event) { if (event.which == 27) { $('#search-resultbox').hide(); } });
+// hide search results on click to document
+$(document).bind('click', function (e) { $('#search-resultbox').hide(); });
+// except the following:
+searchBox.bind('click', function(e) { e.stopPropagation(); });
+$('#search-resultbox').bind('click', function(e) { e.stopPropagation(); });
+
+});</script></body>
+</html>

@@ -10,7 +10,9 @@ use mihaildev\ckeditor\CKEditor;
 
 $this->registerJsFile('http://api.map.baidu.com/api?v=2.0&ak=jcM1TIy1YKLrb78wGbHoKST86xduLZWV');
 $poiArr = explode(',', $model->poi);
-$this->registerJs("var _poi_lat = {$poiArr[1]},_poi_long = {$poiArr[0]};");
+$poi_lat = isset($poiArr[1])?$poiArr[1]:0;
+$poi_long = isset($poiArr[0])?$poiArr[0]:0;
+$this->registerJs("var _poi_lat = {$poi_lat},_poi_long = {$poi_long};");
 $this->registerJs($this->render('_script.js'));
 ?>
 <div class="manhole-cover-form col-lg-6">

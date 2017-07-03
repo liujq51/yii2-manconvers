@@ -12,7 +12,7 @@ use yii\widgets\Pjax;
 <div class="login-container">
 			<div class="center">
                 <h1> <i class="ace-icon fa fa-leaf green"></i><span class="red" style="font-size:26px;"><?= Html::encode($this->title) ?></span></h1>
-        		<h4 class="blue" id="id-company-text">&copy; Rbox1</h4>
+        		<h4 class="blue" id="id-company-text">&copy; Rbox</h4>
 			</div>
             <div class="space-6"></div>
             <div class="position-relative">

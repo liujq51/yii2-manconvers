@@ -1065,12 +1065,12 @@ body.smart-style-2 {
 }
 
 .smart-style-3 #header {
-	background-color: #333333;
-	background-image: -moz-linear-gradient(top, #222222, #333333);
-	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#222222),to(#333333));
-	background-image: -webkit-linear-gradient(top, #222222, #333333);
-	background-image: -o-linear-gradient(top, #222222, #333333);
-	background-image: linear-gradient(to bottom, #222222, #333333)
+	background-color: #289447;
+	background-image: -moz-linear-gradient(top, #519686, #289447);
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#519686),to(#289447));
+	background-image: -webkit-linear-gradient(top, #519686, #289447);
+	background-image: -o-linear-gradient(top, #519686, #289447);
+	background-image: linear-gradient(to bottom, #289447, #289447)
 }
 
 .smart-style-3 #ribbon {
@@ -1139,7 +1139,7 @@ body.smart-style-2 {
 }
 
 .smart-style-3 nav>ul>li>a>i {
-	color: #000;
+	color: #659a4b;
 	font-size: 20px
 }
 
@@ -1292,7 +1292,7 @@ body.smart-style-2 {
 }
 
 .smart-style-3 .page-footer, .smart-style-3 .superbox-show {
-	background: #333333
+	background: #289447;
 }
 
 .smart-style-3.minified nav>ul>li {

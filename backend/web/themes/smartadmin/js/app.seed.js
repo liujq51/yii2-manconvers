@@ -317,8 +317,8 @@ var calc_navbar_height = function() {
 			$.root_.on('click', '[data-action="launchFullscreen"]', function(e) {	
 				smartActions.launchFullscreen(document.documentElement);
 				e.preventDefault();
-			}); 
-			
+			});
+
 			$.root_.on('click', '[data-action="minifyMenu"]', function(e) {
 				var $this = $(this);
 				smartActions.minifyMenu($this);
@@ -326,7 +326,8 @@ var calc_navbar_height = function() {
 				
 				//clear memory reference
 				$this = null;
-			}); 
+			});
+
 			
 			$.root_.on('click', '[data-action="toggleMenu"]', function(e) {	
 				smartActions.toggleMenu();
@@ -336,7 +337,8 @@ var calc_navbar_height = function() {
 			$.root_.on('click', '[data-action="toggleShortcut"]', function(e) {	
 				smartActions.toggleShortcut();
 				e.preventDefault();
-			}); 
+			});
+
 					
 		};
 		/* ~ END: SMART ACTIONS */
@@ -495,7 +497,7 @@ var calc_navbar_height = function() {
 		initApp.SmartActions();
 		initApp.leftNav();
 		initApp.domReadyMisc();
-	
+
 	});
 /*
  * RESIZER WITH THROTTLE

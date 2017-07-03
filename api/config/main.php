@@ -14,6 +14,7 @@ return [
     'modules' => [
 	    'v1' => [
 	        'class' => 'api\modules\v1\Module',
+            //'basePath' => '@api\modules\v1',
 	    ],
 	 ],
     'components' => [
@@ -47,9 +48,9 @@ return [
             'enableStrictParsing' => true,
             'showScriptName' => false,
             'rules' => [
-				    ['class'=>'yii\rest\UrlRule','controller' =>['user','v1/city'],'pluralize'=>false],
+                ['class'=>'yii\rest\UrlRule','controller' =>['v1/manholecover'],'pluralize'=>true],
                 ['class' => 'yii\rest\UrlRule','controller' => ['good'=>'v1/good']],
-                ],
+            ],
         ],
     ],
     'params' => $params,

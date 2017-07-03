@@ -29,6 +29,8 @@ class GoodController extends BaseActiveController
     
     public function prepareDataProvider()
     {
+        $ret = ['code'=>200, 'data'=>['a'=>'abc']];
+        echo json_encode($ret);
         // 为"index"操作准备和返回数据provider
     }
 
